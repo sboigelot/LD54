@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Components/Attendee/AttendeeVisual.gd" type="Script" id=1]
+[ext_resource path="res://Images/Avatars/body1.svg" type="Texture" id=2]
+[ext_resource path="res://Images/Avatars/face_thin_light.svg" type="Texture" id=3]
+[ext_resource path="res://Images/Avatars/eye_green.svg" type="Texture" id=4]
+[ext_resource path="res://Images/Avatars/hair1_brown.svg" type="Texture" id=5]
+
+[node name="AttendeeVisual" type="Node2D"]
+script = ExtResource( 1 )
+np_hair_sprite = NodePath("HairSprite")
+np_eyes_sprite = NodePath("EyesSprite")
+np_face_sprite = NodePath("FaceSprite")
+np_body_sprite = NodePath("BodySprite")
+
+[node name="BodySprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="FaceSprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="EyesSprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="HairSprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )

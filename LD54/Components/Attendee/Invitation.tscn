@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Components/Attendee/Invitation.gd" type="Script" id=1]
+[ext_resource path="res://Images/UI/note.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Game/small.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/Game/xsmall.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 512, 512 )
+margin_left = 278.858
+margin_right = 61.8009
+margin_top = 131.956
+margin_bottom = 49.7422
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 75, 30 )
+
+[node name="Invitation" type="KinematicBody2D"]
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 1 )
+np__name_label = NodePath("NotePanel/FullNameLabel")
+
+[node name="NotePanel" type="Panel" parent="."]
+margin_left = -75.0
+margin_top = -30.0
+margin_right = 75.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 75, 30 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 5 )
+
+[node name="FullNameLabel" type="Label" parent="NotePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Nam"
+align = 1
+valign = 1
+
+[node name="SeatLabel" type="Label" parent="NotePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "not seated"
+align = 1
+valign = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )

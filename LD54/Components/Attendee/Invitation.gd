@@ -1,28 +1,34 @@
 extends Draggable
 
-var host_drop_zone
+export(NodePath) var np__name_label
+onready var name_label = get_node(np__name_label) as Label
+
+var un_invited_zone
+var assigned_seat
+var pre_drag_assigned_seat
 
 var move_threshold: float = 5.0
-var speed: float = 500.0
+var speed: float = 1500.0
 var destination: Vector2
 
 var vertical_spacer = 70.0
 
 func _ready():
+	connect("input_event", self, "_on_Invitation_input_event")
 	destination = global_position
 	update_seat_label()
 	
 func update_seat_label():
-	if host_drop_zone == null:
+	if assigned_seat == null:
 		$NotePanel/SeatLabel.text = "Not seated"
-	elif host_drop_zone.single_content:
+	elif assigned_seat.single_content:
 		$NotePanel/SeatLabel.text = "%s %s" % [
-			host_drop_zone.get_parent().name,
-			host_drop_zone.name
+			assigned_seat.get_parent().name,
+			assigned_seat.name
 		]
 	else:
 		$NotePanel/SeatLabel.text = "%s" % [
-			host_drop_zone.name
+			assigned_seat.name
 		]
 
 func _process(delta):
@@ -35,6 +41,7 @@ func _process(delta):
 func on_drag():
 	.on_drag()
 	destination = global_position
+	pre_drag_assigned_seat = assigned_seat
 	$NotePanel.rect_rotation = 8
 	$NotePanel.rect_scale = Vector2.ONE * 1.1
 	
@@ -45,7 +52,7 @@ func on_drop():
 	
 	move_to_global_position(global_position, false)
 	search_drop_zone()
-	if host_drop_zone == null:
+	if assigned_seat == null:
 		pervent_draggable_stack()
 		
 #	TODO: prevent going out of get_viewport_rect()
@@ -60,15 +67,15 @@ func search_drop_zone():
 			move_to_drop_zone(drop_zone)
 			return
 			
-		if not drop_zone.can_swap(self):
-			continue
-			
-		if host_drop_zone != null:
-			drop_zone.content.move_to_drop_zone(host_drop_zone)
-		else:
-			drop_zone.content.move_to_global_position(pre_drag_global_position, true)
-		move_to_drop_zone(drop_zone)
-		return
+		if drop_zone.can_swap(self):
+			if pre_drag_assigned_seat != null:
+				drop_zone.content.move_to_drop_zone(pre_drag_assigned_seat)
+			elif un_invited_zone != null:
+				drop_zone.content.un_invite(true)
+			else:
+				drop_zone.content.move_to_global_position(pre_drag_global_position, true)
+			move_to_drop_zone(drop_zone)
+			return
 
 func get_drop_zones():
 	return get_tree().get_nodes_in_group("dropzone")
@@ -102,25 +109,25 @@ func move_to_global_position(pos:Vector2, anim:bool):
 		global_position = pos
 	destination = pos
 	
-	if host_drop_zone != null:
-		if host_drop_zone.single_content:
-			host_drop_zone.content = null
-		elif self in host_drop_zone.items:
-			host_drop_zone.items.erase(self)
-			reorganize_dropzone_items(host_drop_zone)
-		host_drop_zone = null
+	if assigned_seat != null:
+		if assigned_seat.single_content:
+			assigned_seat.content = null
+		elif self in assigned_seat.items:
+			assigned_seat.items.erase(self)
+			reorganize_dropzone_items(assigned_seat)
+		assigned_seat = null
 	update_seat_label()
 
 func move_to_drop_zone(drop_zone, anim:bool=false):
 	
 	var drop_pos = drop_zone.global_position
 	
-	host_drop_zone = drop_zone
-	if host_drop_zone.single_content:
-		host_drop_zone.content = self
-	elif not self in host_drop_zone.items:
-		drop_pos += Vector2(0, vertical_spacer * host_drop_zone.items.size())
-		host_drop_zone.items.append(self)
+	assigned_seat = drop_zone
+	if assigned_seat.single_content:
+		assigned_seat.content = self
+	elif not self in assigned_seat.items:
+		drop_pos += Vector2(0, vertical_spacer * assigned_seat.items.size())
+		assigned_seat.items.append(self)
 	update_seat_label()
 	
 	if not anim:
@@ -137,3 +144,7 @@ func reorganize_dropzone_items(drop_zone):
 	
 func _on_Invitation_input_event(viewport, event, shape_idx):
 	handle_input_event(event)
+	
+func un_invite(anim:bool=false):
+	assert(un_invited_zone != null)
+	move_to_drop_zone(un_invited_zone, anim)

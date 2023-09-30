@@ -22,36 +22,9 @@ export(Texture) var eyes_texture
 export(Texture) var face_texture
 export(Texture) var body_texture
 
-export(NodePath) var np_hair_sprite
-export(NodePath) var np_eyes_sprite
-export(NodePath) var np_face_sprite
-export(NodePath) var np_body_sprite
-
-onready var hair_sprite = get_node(np_hair_sprite) as Sprite
-onready var eyes_sprite = get_node(np_eyes_sprite) as Sprite
-onready var face_sprite = get_node(np_face_sprite) as Sprite
-onready var body_sprite = get_node(np_body_sprite) as Sprite
-
-export(NodePath) var np_invitation_name_label
-onready var invitation_name_label = get_node(np_invitation_name_label) as Label
-
-var assigned_seat
-
 func _ready():
-	update_sprites()
-
-func update_sprites():
-	
-	apply_texture_to_sprite(hair_texture, hair_sprite)
-	apply_texture_to_sprite(eyes_texture, eyes_sprite)
-	apply_texture_to_sprite(face_texture, face_sprite)
-	apply_texture_to_sprite(body_texture, body_sprite)
-	
-	invitation_name_label.text = full_name
-	
-func apply_texture_to_sprite(texture:Texture, sprite:Sprite):
-	sprite.visible = texture != null
-	sprite.texture = texture
+	$AttendeeVisual.update_sprites(self)
+	$Invitation.name_label.text = full_name
 	
 func toggle_ivitation(visible:bool):
 	$Invitation.visible = visible
@@ -66,4 +39,5 @@ func _on_Invitation_select():
 	LevelUi.show_attendee_details(self)
 	
 func un_invite(drop_zone):
-	$Invitation.move_to_drop_zone(drop_zone)
+	$Invitation.un_invited_zone = drop_zone
+	$Invitation.un_invite()
