@@ -22,6 +22,7 @@ func _on_FullscreenButton_pressed():
 	SfxManager.play("buttonpress")
 
 func _ready():
+	LevelUi.hide()
 	update_sound_sliders()
 	
 func _input(event):

@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Attendee",
+"language": "GDScript",
+"path": "res://Components/Attendee/Attendee.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Draggable",
+"language": "GDScript",
+"path": "res://Components/Draggable.gd"
+}, {
 "base": "Node",
 "class": "GameData",
 "language": "GDScript",
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://Utilities/ResourceAsyncLoader.gd"
 } ]
 _global_script_class_icons={
+"Attendee": "",
+"Draggable": "",
 "GameData": "",
 "ResourceAsyncLoader": ""
 }
@@ -39,8 +51,9 @@ config/icon="res://icon.png"
 Photograph="*res://Utilities/Photograph.gd"
 SfxManager="*res://Sounds/SfxManager.tscn"
 Music="*res://Sounds/Music.tscn"
-Game="*res://Game.tscn"
 ScreenTransition="*res://addons/node_library/scenes/ScreenTransition.tscn"
+Game="*res://Game.tscn"
+LevelUi="*res://Scenes/LevelUI.tscn"
 
 [display]
 
