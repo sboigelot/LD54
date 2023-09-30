@@ -1,0 +1,81 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "GameData",
+"language": "GDScript",
+"path": "res://Data/GameData.gd"
+}, {
+"base": "Reference",
+"class": "ResourceAsyncLoader",
+"language": "GDScript",
+"path": "res://Utilities/ResourceAsyncLoader.gd"
+} ]
+_global_script_class_icons={
+"GameData": "",
+"ResourceAsyncLoader": ""
+}
+
+[addons]
+
+node_library/enable_screen_transition=true
+
+[application]
+
+config/name="LD54"
+run/main_scene="res://Scenes/MainMenu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Photograph="*res://Utilities/Photograph.gd"
+SfxManager="*res://Sounds/SfxManager.tscn"
+Music="*res://Sounds/Music.tscn"
+Game="*res://Game.tscn"
+ScreenTransition="*res://addons/node_library/scenes/ScreenTransition.tscn"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=1600
+window/size/test_height=900
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/node_library/plugin.cfg" )
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+toggle_fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+screenshot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
