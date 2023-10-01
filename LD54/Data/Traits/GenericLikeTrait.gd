@@ -11,8 +11,8 @@ func get_identifier()->String:
 func get_display_name()->String:
 	return topic
 	
-func get_color()->Color:
-	return Color.lime if dislike else Color.red
+func get_color()->String:
+	return "red" if dislike else "green"
 	
 func get_description()->String:
 	return "%s %s" % [

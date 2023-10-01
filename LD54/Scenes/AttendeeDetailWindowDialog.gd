@@ -20,6 +20,17 @@ func show_detail(attendee:Attendee, show:bool):
 	ui_attendee_visual.update_sprites(attendee)
 	ui_name_label.text = attendee.full_name
 	ui_seat_label.text = attendee.get_seat_label()
+	
+	var traits_str = []
+	for trait in attendee.traits:
+		traits_str.append("[url=%s][color=%s]%s[/color][/url]" % [
+			trait.get_identifier(),
+			trait.get_color(),
+			trait.get_display_name()
+		])
+	var desc = "[center][color=black]%s[/color][/center]" % [ PoolStringArray(traits_str).join(", ") ]
+	ui_traits_rich_text_label.bbcode_text = desc
+	
 	if show:
 		show()
 
@@ -49,7 +60,6 @@ func _on_MainContainer_gui_input(event):
 			rect_scale = Vector2.ONE
 			ui_attendee_visual.rotation_degrees =  0
 			ui_attendee_visual.scale = Vector2.ONE * 2
-
 
 func _on_TraitsRichTextLabel_meta_hover_started(meta):
 	emit_signal("show_tooltip", meta)

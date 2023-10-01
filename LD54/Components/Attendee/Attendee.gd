@@ -3,7 +3,6 @@ extends Node2D
 class_name Attendee
 
 signal phase_completed
-signal all_interaction_completed
 
 export(String) var full_name
 export(PoolStringArray) var tags
@@ -69,8 +68,7 @@ func start_phase_seat(delay):
 	yield($AttendeeVisual, "move_completed")
 	
 #	Attendee interract with groom
-	interact_with_bride()
-	yield(self, "all_interaction_completed")
+	yield(interact_with_bride(), "completed")
 
 #	Attendee go to groom
 	var groom_position = Vector2(50, 100)
@@ -78,8 +76,7 @@ func start_phase_seat(delay):
 	yield($AttendeeVisual, "move_completed")
 	
 #	Attendee interract with groom
-	interact_with_groom()
-#	yield(self, "all_interaction_completed")
+	yield(interact_with_groom(), "completed")
 	
 #	Attendee go to seat
 	var seat_position = get_seat().global_position
@@ -87,8 +84,7 @@ func start_phase_seat(delay):
 	yield($AttendeeVisual, "move_completed")
 	
 #	Attendee interact with seat
-	interact_with_seat_position(get_seat())
-#	yield(self, "all_interaction_completed")
+	yield(interact_with_seat_position(get_seat()), "completed")	
 	seated = true
 
 #	Attendee wait for everyone at table
@@ -101,12 +97,10 @@ func start_phase_seat(delay):
 	for other_attendee in attendees:
 		if self == other_attendee:
 			continue
-		interact_with_attendee(other_attendee)
-#	yield(self, "all_interaction_completed")
-	
+		yield(interact_with_attendee(other_attendee), "completed")
+		
 	emit_signal("phase_completed")
 	
-			
 func register_trait(trait):
 	if not trait in traits:
 		traits.append(trait)
@@ -146,6 +140,7 @@ func get_seat_label():
 		]
 
 func interact_with_attendee(other_attendee):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	for trait in traits:
 		for other_trait in other_attendee.traits:
 			var interaction_event = trait.interact_with(
@@ -154,9 +149,10 @@ func interact_with_attendee(other_attendee):
 				Game.Data.current_level.current_phase)
 			if interaction_event != null:
 				Game.Data.current_level.add_interaction_event(interaction_event)
-	emit_signal("all_interaction_completed")
+
 	
 func interact_with_seat_position(seat):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	for trait in traits:
 		var interaction_event = trait.interact_with_seat(
 										seat,
@@ -164,20 +160,18 @@ func interact_with_seat_position(seat):
 		if interaction_event != null:
 			Game.Data.current_level.add_interaction_event(interaction_event)
 	
-	emit_signal("all_interaction_completed")
-			
 func interact_with_bride():
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	for trait in traits:
 		var interaction_event = trait.interact_with_bride(
 					Game.Data.current_level.current_phase)
 		if interaction_event != null:
 			Game.Data.current_level.add_interaction_event(interaction_event)
-	emit_signal("all_interaction_completed")
 			
-func interact_with_groom():
+func interact_with_groom():	
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	for trait in traits:
 		var interaction_event = trait.interact_with_groom(
 					Game.Data.current_level.current_phase)
 		if interaction_event != null:
 			Game.Data.current_level.add_interaction_event(interaction_event)
-	emit_signal("all_interaction_completed")

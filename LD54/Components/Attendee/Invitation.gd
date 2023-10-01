@@ -11,7 +11,7 @@ var pre_drag_assigned_seat
 var dropzone_meta
 
 var move_threshold: float = 5.0
-var speed: float = 1500.0
+var speed: float = 600.0
 var destination: Vector2
 
 var vertical_spacer = 70.0
