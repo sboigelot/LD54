@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/LevelUI.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Game/normal_bold.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Components/Attendee/AttendeeVisual.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/AttendeeDetailWindowDialog.gd" type="Script" id=4]
 [ext_resource path="res://Fonts/Game/normal.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Images/UI/landscape1.png" type="Texture" id=6]
+[ext_resource path="res://Theme/Polaroid_panel.tres" type="StyleBox" id=7]
+[ext_resource path="res://Fonts/Game/small.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Images/UI/close.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/TooltipPopup.gd" type="Script" id=10]
 
 [node name="LevelUI" type="CanvasLayer"]
 layer = 2
@@ -22,43 +27,149 @@ mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 2 )
 text = "This is a level UI"
 
-[node name="AttendeeDetailWindowDialog" type="WindowDialog" parent="LevelUIControl"]
+[node name="AttendeeDetailWindowDialog" type="Popup" parent="LevelUIControl"]
 visible = true
 margin_left = 83.0
 margin_top = 178.0
-margin_right = 563.0
-margin_bottom = 818.0
-rect_min_size = Vector2( 480, 640 )
+margin_right = 371.0
+margin_bottom = 628.0
 script = ExtResource( 4 )
+np_attendee_visual = NodePath("MainContainer/MarginContainer/VBoxContainer/PhotoContainer/Photo/AttendeeVisual")
+np_name_label = NodePath("MainContainer/MarginContainer/VBoxContainer/NameLabel")
+np_seat_label = NodePath("MainContainer/MarginContainer/VBoxContainer/SeatLabel")
+np_traits_rich_text_label = NodePath("MainContainer/MarginContainer/VBoxContainer/MarginContainer/TraitsRichTextLabel")
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelUIControl/AttendeeDetailWindowDialog"]
+[node name="MainContainer" type="PanelContainer" parent="LevelUIControl/AttendeeDetailWindowDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -20.0
+rect_min_size = Vector2( 288, 450 )
+mouse_default_cursor_shape = 2
+custom_styles/panel = ExtResource( 7 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MarginContainer"]
-margin_right = 480.0
-margin_bottom = 640.0
+[node name="MarginContainer" type="MarginContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 280.0
+margin_bottom = 442.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 16
+custom_constants/margin_left = 16
 
-[node name="CenterContainer" type="CenterContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MarginContainer/VBoxContainer"]
-margin_right = 480.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 120 )
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer"]
+margin_left = 16.0
+margin_right = 256.0
+margin_bottom = 434.0
+mouse_filter = 2
 
-[node name="AttendeeVisual" parent="LevelUIControl/AttendeeDetailWindowDialog/MarginContainer/VBoxContainer/CenterContainer" instance=ExtResource( 3 )]
-position = Vector2( 240, 60 )
+[node name="Top" type="MarginContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 0, 8 )
+mouse_filter = 2
 
-[node name="NameLabel" type="Label" parent="LevelUIControl/AttendeeDetailWindowDialog/MarginContainer/VBoxContainer"]
-margin_top = 124.0
-margin_right = 480.0
-margin_bottom = 167.0
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/Top"]
+margin_right = 240.0
+margin_bottom = 8.0
+mouse_filter = 2
+alignment = 2
+
+[node name="LayoutDecoupler" type="Control" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/Top/HBoxContainer"]
+margin_left = 240.0
+margin_right = 240.0
+margin_bottom = 8.0
+mouse_filter = 2
+
+[node name="TextureButton" type="TextureButton" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/Top/HBoxContainer/LayoutDecoupler"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+rect_pivot_offset = Vector2( 16, 16 )
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="PhotoContainer" type="CenterContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer"]
+margin_top = 12.0
+margin_right = 240.0
+margin_bottom = 252.0
+mouse_filter = 2
+
+[node name="Photo" type="PanelContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/PhotoContainer"]
+margin_right = 240.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 240, 240 )
+rect_clip_content = true
+mouse_filter = 2
+custom_styles/panel = ExtResource( 7 )
+
+[node name="PhotoBackground" type="TextureRect" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/PhotoContainer/Photo"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 232.0
+margin_bottom = 232.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+
+[node name="AttendeeVisual" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/PhotoContainer/Photo" instance=ExtResource( 3 )]
+position = Vector2( 120, 160 )
+scale = Vector2( 2, 2 )
+
+[node name="NameLabel" type="Label" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer"]
+margin_top = 256.0
+margin_right = 240.0
+margin_bottom = 299.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "Full Name"
 align = 1
 
-[node name="SeatLabel" type="Label" parent="LevelUIControl/AttendeeDetailWindowDialog/MarginContainer/VBoxContainer"]
-margin_top = 171.0
-margin_right = 480.0
-margin_bottom = 185.0
+[node name="Separator" type="ColorRect" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer"]
+visible = false
+margin_top = 256.0
+margin_right = 240.0
+margin_bottom = 258.0
+rect_min_size = Vector2( 0, 2 )
+mouse_filter = 2
+color = Color( 0.176471, 0.262745, 0.309804, 1 )
+
+[node name="SeatLabel" type="Label" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer"]
+margin_top = 303.0
+margin_right = 240.0
+margin_bottom = 317.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Table 1 Seat 1"
+align = 1
+
+[node name="Separator2" type="ColorRect" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer"]
+margin_top = 321.0
+margin_right = 240.0
+margin_bottom = 323.0
+rect_min_size = Vector2( 0, 2 )
+mouse_filter = 2
+color = Color( 0.176471, 0.262745, 0.309804, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer"]
+margin_top = 327.0
+margin_right = 240.0
+margin_bottom = 434.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TraitsRichTextLabel" type="RichTextLabel" parent="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/MarginContainer"]
+margin_top = 24.0
+margin_right = 240.0
+margin_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/normal_font = ExtResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[center][color=black][url=Grumpy][color=red]Grumpy[/color][/url], [color=black]Chatty[/color], [color=green]Helpful[/color], likes cake"
+text = "Grumpy, Chatty, Helpful, likes cake"
+fit_content_height = true
 
 [node name="QuitConfirmationDialog" type="ConfirmationDialog" parent="LevelUIControl"]
 margin_right = 200.0
@@ -66,4 +177,51 @@ margin_bottom = 70.0
 dialog_text = "Are you sure you wish to quit this level?
 All progress will be lost!"
 
+[node name="TooltipPopup" type="Popup" parent="LevelUIControl"]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
+
+[node name="MainContainer" type="PanelContainer" parent="LevelUIControl/TooltipPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 226.0
+margin_bottom = 34.0
+mouse_default_cursor_shape = 2
+custom_styles/panel = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUIControl/TooltipPopup/MainContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 266.0
+margin_bottom = 74.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="ContentRichTextBox" type="RichTextLabel" parent="LevelUIControl/TooltipPopup/MainContainer/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 254.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/normal_font = ExtResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[color=black]this is a tooltip content[/color]"
+text = "this is a tooltip content"
+fit_content_height = true
+
+[connection signal="hide_tooltip" from="LevelUIControl/AttendeeDetailWindowDialog" to="." method="_on_AttendeeDetailWindowDialog_hide_tooltip"]
+[connection signal="show_tooltip" from="LevelUIControl/AttendeeDetailWindowDialog" to="." method="_on_AttendeeDetailWindowDialog_show_tooltip"]
+[connection signal="gui_input" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
+[connection signal="pressed" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/Top/HBoxContainer/LayoutDecoupler/TextureButton" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TextureButton_pressed"]
+[connection signal="meta_hover_ended" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/MarginContainer/TraitsRichTextLabel" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_ended"]
+[connection signal="meta_hover_started" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/MarginContainer/TraitsRichTextLabel" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_started"]
 [connection signal="confirmed" from="LevelUIControl/QuitConfirmationDialog" to="." method="_on_QuitConfirmationDialog_confirmed"]
+[connection signal="gui_input" from="LevelUIControl/TooltipPopup/MainContainer" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
+[connection signal="meta_hover_ended" from="LevelUIControl/TooltipPopup/MainContainer/MarginContainer/ContentRichTextBox" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_ended"]
+[connection signal="meta_hover_started" from="LevelUIControl/TooltipPopup/MainContainer/MarginContainer/ContentRichTextBox" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_started"]

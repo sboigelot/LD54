@@ -3,6 +3,8 @@ extends Draggable
 export(NodePath) var np__name_label
 onready var name_label = get_node(np__name_label) as Label
 
+var attendee
+
 var un_invited_zone
 var assigned_seat
 var pre_drag_assigned_seat
@@ -16,20 +18,15 @@ var vertical_spacer = 70.0
 func _ready():
 	connect("input_event", self, "_on_Invitation_input_event")
 	destination = global_position
+
+func update_attendee(value):
+	attendee = value
+	name_label.text = attendee.full_name
 	update_seat_label()
-	
+
 func update_seat_label():
-	if assigned_seat == null:
-		$NotePanel/SeatLabel.text = "Not seated"
-	elif assigned_seat.single_content:
-		$NotePanel/SeatLabel.text = "%s %s" % [
-			assigned_seat.get_parent().name,
-			assigned_seat.name
-		]
-	else:
-		$NotePanel/SeatLabel.text = "%s" % [
-			assigned_seat.name
-		]
+	if attendee != null:
+		$NotePanel/SeatLabel.text = attendee.get_seat_label()
 
 func _process(delta):
 	if global_position.distance_to(destination) > move_threshold:
@@ -117,6 +114,7 @@ func move_to_global_position(pos:Vector2, anim:bool):
 			reorganize_dropzone_items(assigned_seat)
 		assigned_seat = null
 	update_seat_label()
+	LevelUi.update_attendee_details(attendee)
 
 func move_to_drop_zone(drop_zone, anim:bool=false):
 	
@@ -129,6 +127,7 @@ func move_to_drop_zone(drop_zone, anim:bool=false):
 		drop_pos += Vector2(0, vertical_spacer * assigned_seat.items.size())
 		assigned_seat.items.append(self)
 	update_seat_label()
+	LevelUi.update_attendee_details(attendee)
 	
 	if not anim:
 		global_position = drop_pos

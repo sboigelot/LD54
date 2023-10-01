@@ -24,7 +24,7 @@ export(Texture) var body_texture
 
 func _ready():
 	$AttendeeVisual.update_sprites(self)
-	$Invitation.name_label.text = full_name
+	$Invitation.update_attendee(self)
 	
 func toggle_ivitation(visible:bool):
 	$Invitation.visible = visible
@@ -41,3 +41,21 @@ func _on_Invitation_select():
 func un_invite(drop_zone):
 	$Invitation.un_invited_zone = drop_zone
 	$Invitation.un_invite()
+
+func get_seat():
+	return $Invitation.assigned_seat
+	
+func get_seat_label():
+	var seat = get_seat()
+	if seat == null:
+		return "Not seated"
+		
+	if seat.single_content:
+		return "%s %s" % [
+			seat.get_parent().name,
+			seat.name
+		]
+	
+	return "%s" % [
+			seat.name
+		]
