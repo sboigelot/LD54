@@ -1,6 +1,10 @@
 extends Node2D
 
+class_name DropZone
+
 export var single_content:bool = true
+
+export var seat_name = "Uninvited"
 
 var content
 var items: Array

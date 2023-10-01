@@ -53,9 +53,9 @@ func get_seat_label():
 	if seat.single_content:
 		return "%s %s" % [
 			seat.get_parent().name,
-			seat.name
+			seat.seat_name
 		]
 	
 	return "%s" % [
-			seat.name
+			seat.seat_name
 		]

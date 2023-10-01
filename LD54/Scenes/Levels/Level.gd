@@ -6,4 +6,4 @@ func _ready():
 	
 func un_invite_all():
 	for attendee in $Attendees.get_children():
-		attendee.un_invite($Uninvited)
+		attendee.un_invite(LevelUi.guess_book)

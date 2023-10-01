@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+export(NodePath) var np_guess_book
+onready var guess_book = get_node(np_guess_book)
+
 func _ready():
 	visible = false
 	

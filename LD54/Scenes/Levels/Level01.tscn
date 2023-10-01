@@ -15,48 +15,72 @@
 script = ExtResource( 1 )
 
 [node name="Table1" type="Node2D" parent="."]
+position = Vector2( -846, 52 )
 
 [node name="Seat1" parent="Table1" instance=ExtResource( 3 )]
 position = Vector2( 1551, 654 )
+seat_name = "Seat 1"
 
 [node name="Seat2" parent="Table1" instance=ExtResource( 3 )]
 position = Vector2( 1354, 858 )
+seat_name = "Seat 2"
 
 [node name="Seat3" parent="Table1" instance=ExtResource( 3 )]
 position = Vector2( 1354, 654 )
+seat_name = "Seat 3"
 
 [node name="Seat4" parent="Table1" instance=ExtResource( 3 )]
 position = Vector2( 1557, 852 )
+seat_name = "Seat 4"
 
 [node name="Table2" type="Node2D" parent="."]
-position = Vector2( -999, -469 )
+position = Vector2( -1175, -316 )
 
 [node name="Seat1" parent="Table2" instance=ExtResource( 3 )]
 position = Vector2( 1551, 654 )
+seat_name = "Seat 1"
 
 [node name="Seat2" parent="Table2" instance=ExtResource( 3 )]
 position = Vector2( 1354, 858 )
+seat_name = "Seat 2"
 
 [node name="Seat3" parent="Table2" instance=ExtResource( 3 )]
 position = Vector2( 1354, 654 )
+seat_name = "Seat 3"
 
 [node name="Seat4" parent="Table2" instance=ExtResource( 3 )]
 position = Vector2( 1557, 852 )
+seat_name = "Seat 4"
 
-[node name="Uninvited" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1815, 128 )
-single_content = false
+[node name="Table3" type="Node2D" parent="."]
+position = Vector2( -336, -56 )
+
+[node name="Seat1" parent="Table3" instance=ExtResource( 3 )]
+position = Vector2( 1551, 654 )
+seat_name = "Seat 1"
+
+[node name="Seat2" parent="Table3" instance=ExtResource( 3 )]
+position = Vector2( 1354, 858 )
+seat_name = "Seat 2"
+
+[node name="Seat3" parent="Table3" instance=ExtResource( 3 )]
+position = Vector2( 1354, 654 )
+seat_name = "Seat 3"
+
+[node name="Seat4" parent="Table3" instance=ExtResource( 3 )]
+position = Vector2( 1557, 852 )
+seat_name = "Seat 4"
 
 [node name="Attendees" type="Node2D" parent="."]
 
 [node name="Attendee" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 583, 504 )
+position = Vector2( 1654, 187 )
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 8 )
 
 [node name="Attendee2" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 1351, 390 )
+position = Vector2( 1650, 290 )
 full_name = "Benoit"
 hair_texture = ExtResource( 5 )
 eyes_texture = ExtResource( 6 )
@@ -64,12 +88,12 @@ face_texture = ExtResource( 11 )
 body_texture = ExtResource( 9 )
 
 [node name="Attendee3" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 955, 752 )
+position = Vector2( 1648, 397 )
 full_name = "Andrea"
 body_texture = ExtResource( 9 )
 
 [node name="Attendee4" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 907, 345 )
+position = Vector2( 1659, 512 )
 full_name = "Pascal"
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
