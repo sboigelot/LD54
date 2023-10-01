@@ -12,7 +12,8 @@ func _ready():
 func new_game():
 	if Data != null:
 		Data.queue_free()
-
+		
+	LevelUi.clear()
 	Data = game_data_scene.instance()
 	add_child(Data)
 	

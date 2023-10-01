@@ -5,11 +5,6 @@ class_name Attendee
 export(String) var full_name
 export(PoolStringArray) var tags
 
-export(PoolStringArray) var loves
-export(PoolStringArray) var likes
-export(PoolStringArray) var dislikes
-export(PoolStringArray) var hates
-
 export(int) var mood = 0
 
 const MOOD_IMPACT_LOVE = 3
@@ -22,9 +17,34 @@ export(Texture) var eyes_texture
 export(Texture) var face_texture
 export(Texture) var body_texture
 
+var traits: Array
+
 func _ready():
 	$AttendeeVisual.update_sprites(self)
 	$Invitation.update_attendee(self)
+
+func on_new_phase():
+	match Game.Data.current_level.current_phase:
+		Level.PHASE.PLAN:
+			$AttendeeVisual.visible = false
+			$Invitation.visible = true
+			
+		Level.PHASE.SEAT:
+			$AttendeeVisual.visible = true
+			$AttendeeVisual.global_position = Game.Data.current_level.attendee_start_pos2D.global_position
+			$Invitation.visible = false
+			
+		Level.PHASE.EATDRKINK:
+			$AttendeeVisual.visible = true
+			$Invitation.visible = false
+			
+		Level.PHASE.PARTY:
+			$AttendeeVisual.visible = true
+			$Invitation.visible = false
+
+func register_trait(trait):
+	if not trait in traits:
+		traits.append(trait)
 	
 func toggle_ivitation(visible:bool):
 	$Invitation.visible = visible
@@ -59,3 +79,36 @@ func get_seat_label():
 	return "%s" % [
 			seat.seat_name
 		]
+
+func interact_with_attendee(other_attendee):
+	for trait in traits:
+		for other_trait in other_attendee.traits:
+			var interaction_event = trait.interact_with(
+				other_attendee, 
+				other_trait, 
+				Game.Data.current_level.current_phase)
+			if interaction_event != null:
+				Game.Data.current_level.add_interaction_event(interaction_event)
+
+func interact_with_seat_position(seat):
+	for trait in traits:
+		var interaction_event = trait.interact_with_seat(
+										seat,
+										Game.Data.current_level.current_phase)
+		if interaction_event != null:
+			Game.Data.current_level.add_interaction_event(interaction_event)
+				
+	
+func interact_with_bride():
+	for trait in traits:
+		var interaction_event = trait.interact_with_bride(
+					Game.Data.current_level.current_phase)
+		if interaction_event != null:
+			Game.Data.current_level.add_interaction_event(interaction_event)
+				
+func interact_with_groom():
+	for trait in traits:
+		var interaction_event = trait.interact_with_groom(
+					Game.Data.current_level.current_phase)
+		if interaction_event != null:
+			Game.Data.current_level.add_interaction_event(interaction_event)

@@ -13,6 +13,10 @@ export var current_page = 0
 
 export var seat_name = "Uninvited"
 
+func clear():
+	items.clear()
+	arrange_items()
+
 func _ready():
 	add_to_group("dropzone")
 	arrange_items()

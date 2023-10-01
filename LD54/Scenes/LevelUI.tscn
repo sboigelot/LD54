@@ -319,6 +319,13 @@ margin_bottom = 484.0
 rect_min_size = Vector2( 0, 8 )
 mouse_filter = 2
 
+[node name="EndPlanButton" type="Button" parent="LevelUIControl"]
+margin_left = 75.0
+margin_top = 274.0
+margin_right = 87.0
+margin_bottom = 294.0
+text = "END PLAN"
+
 [connection signal="hide_tooltip" from="LevelUIControl/AttendeeDetailWindowDialog" to="." method="_on_AttendeeDetailWindowDialog_hide_tooltip"]
 [connection signal="show_tooltip" from="LevelUIControl/AttendeeDetailWindowDialog" to="." method="_on_AttendeeDetailWindowDialog_show_tooltip"]
 [connection signal="gui_input" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
@@ -332,3 +339,4 @@ mouse_filter = 2
 [connection signal="gui_input" from="LevelUIControl/GuestBook" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
 [connection signal="pressed" from="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/Menu/PrevPageButton" to="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone" method="_on_PrevPageButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/Menu/NextPageButton" to="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone" method="_on_NextPageButton_pressed"]
+[connection signal="pressed" from="LevelUIControl/EndPlanButton" to="." method="_on_EndPlanButton_pressed"]

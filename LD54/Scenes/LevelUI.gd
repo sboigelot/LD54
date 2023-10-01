@@ -6,6 +6,10 @@ onready var guess_book = get_node(np_guess_book)
 func _ready():
 	visible = false
 	
+func clear():
+	$LevelUIControl/EndPlanButton.disabled = false
+	$LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone.clear()
+	
 func show_attendee_details(attendee:Attendee):
 	$LevelUIControl/AttendeeDetailWindowDialog.show_detail(attendee, true)
 
@@ -24,3 +28,10 @@ func _on_AttendeeDetailWindowDialog_show_tooltip(content):
 
 func _on_AttendeeDetailWindowDialog_hide_tooltip(content):
 	$LevelUIControl/TooltipPopup.hide()
+
+func _on_EndPlanButton_pressed():
+	if Game.Data.current_level.current_phase == Level.PHASE.PLAN:
+		Game.Data.current_level.next_phase()
+		$LevelUIControl/GuestBook.hide()
+		$LevelUIControl/AttendeeDetailWindowDialog.hide()
+		$LevelUIControl/EndPlanButton.disabled = true

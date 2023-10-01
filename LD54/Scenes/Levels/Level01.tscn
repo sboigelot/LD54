@@ -1,21 +1,30 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Components/Attendee/Attendee.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/DropZones/DropZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Data/Traits/GenericLikeTrait.gd" type="Script" id=4]
 [ext_resource path="res://Images/Avatars/hair1_grey.svg" type="Texture" id=5]
 [ext_resource path="res://Images/Avatars/eye_green.svg" type="Texture" id=6]
 [ext_resource path="res://Images/Avatars/hair1_brown.svg" type="Texture" id=7]
 [ext_resource path="res://Images/Avatars/face_thin_light.svg" type="Texture" id=8]
 [ext_resource path="res://Images/Avatars/body2.svg" type="Texture" id=9]
+[ext_resource path="res://Components/Table.gd" type="Script" id=10]
 [ext_resource path="res://Images/Avatars/face_light.svg" type="Texture" id=11]
 [ext_resource path="res://Images/Avatars/face_dark.svg" type="Texture" id=13]
 
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 1471, 57, 1481, 933, 1402, 614, 1317, 873, 1101, 482, 37, 53, 903, 569, 915, 892, 803, 897, 769, 640, 616, 608, 377, 655, 97, 1065, 373, 923, 573, 993 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 2, 1 ), PoolIntArray( 0, 2, 4 ), PoolIntArray( 5, 0, 4, 6 ), PoolIntArray( 6, 7, 8, 9 ), PoolIntArray( 5, 6, 9, 10 ), PoolIntArray( 5, 10, 11 ), PoolIntArray( 12, 5, 11, 13 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 1, 12, 14 ), PoolIntArray( 1, 14, 8, 7 ), PoolIntArray( 1, 7, 3 ) ]
+outlines = [ PoolVector2Array( 37, 53, 1471, 57, 1481, 933, 97, 1065 ), PoolVector2Array( 1101, 482, 903, 569, 915, 892, 1317, 873, 1402, 614 ), PoolVector2Array( 616, 608, 377, 655, 373, 923, 573, 993, 803, 897, 769, 640 ) ]
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
+np_attendee_start_pos2d = NodePath("AttendeeStartPosition2D")
 
 [node name="Table1" type="Node2D" parent="."]
 position = Vector2( -846, 52 )
+script = ExtResource( 10 )
 
 [node name="Seat1" parent="Table1" instance=ExtResource( 3 )]
 position = Vector2( 1551, 654 )
@@ -35,6 +44,7 @@ seat_name = "Seat 4"
 
 [node name="Table2" type="Node2D" parent="."]
 position = Vector2( -1175, -316 )
+script = ExtResource( 10 )
 
 [node name="Seat1" parent="Table2" instance=ExtResource( 3 )]
 position = Vector2( 1551, 654 )
@@ -54,6 +64,7 @@ seat_name = "Seat 4"
 
 [node name="Table3" type="Node2D" parent="."]
 position = Vector2( -336, -56 )
+script = ExtResource( 10 )
 
 [node name="Seat1" parent="Table3" instance=ExtResource( 3 )]
 position = Vector2( 1551, 654 )
@@ -73,13 +84,21 @@ seat_name = "Seat 4"
 
 [node name="Attendees" type="Node2D" parent="."]
 
-[node name="Attendee" parent="Attendees" instance=ExtResource( 2 )]
+[node name="Filip" parent="Attendees" instance=ExtResource( 2 )]
 position = Vector2( 1654, 187 )
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 8 )
 
-[node name="Attendee2" parent="Attendees" instance=ExtResource( 2 )]
+[node name="LikeCar" type="Node" parent="Attendees/Filip"]
+script = ExtResource( 4 )
+topic = "Car"
+
+[node name="LikeSpace" type="Node" parent="Attendees/Filip"]
+script = ExtResource( 4 )
+topic = "Space"
+
+[node name="Benoit" parent="Attendees" instance=ExtResource( 2 )]
 position = Vector2( 1650, 290 )
 full_name = "Benoit"
 hair_texture = ExtResource( 5 )
@@ -87,14 +106,43 @@ eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 11 )
 body_texture = ExtResource( 9 )
 
-[node name="Attendee3" parent="Attendees" instance=ExtResource( 2 )]
+[node name="HateFortnite" type="Node" parent="Attendees/Benoit"]
+script = ExtResource( 4 )
+topic = "Fortnite"
+dislike = true
+
+[node name="LikeCar" type="Node" parent="Attendees/Benoit"]
+script = ExtResource( 4 )
+topic = "Car"
+
+[node name="Andrea" parent="Attendees" instance=ExtResource( 2 )]
 position = Vector2( 1648, 397 )
 full_name = "Andrea"
 body_texture = ExtResource( 9 )
 
-[node name="Attendee4" parent="Attendees" instance=ExtResource( 2 )]
+[node name="LikeFotnite" type="Node" parent="Attendees/Andrea"]
+script = ExtResource( 4 )
+topic = "Fortnite"
+
+[node name="HateCar" type="Node" parent="Attendees/Andrea"]
+script = ExtResource( 4 )
+topic = "Car"
+dislike = true
+
+[node name="Pascal" parent="Attendees" instance=ExtResource( 2 )]
 position = Vector2( 1659, 512 )
 full_name = "Pascal"
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 13 )
+
+[node name="LikeSpace" type="Node" parent="Attendees/Pascal"]
+script = ExtResource( 4 )
+topic = "Space"
+
+[node name="AttendeeStartPosition2D" type="Position2D" parent="."]
+position = Vector2( 1156, -103 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+position = Vector2( 15, 4 )
+navpoly = SubResource( 1 )

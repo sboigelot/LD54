@@ -5,6 +5,10 @@ class_name DropZone
 export var single_content:bool = true
 
 export var seat_name = "Uninvited"
+export var near_groom_table: bool
+export var near_buffet: bool
+export var near_bar: bool
+export var near_dance_floor: bool
 
 var content
 var items: Array

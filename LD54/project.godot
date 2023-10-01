@@ -29,17 +29,41 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Data/GameData.gd"
 }, {
+"base": "Trait",
+"class": "GenericLikeTrait",
+"language": "GDScript",
+"path": "res://Data/Traits/GenericLikeTrait.gd"
+}, {
+"base": "Node",
+"class": "InteractionEvent",
+"language": "GDScript",
+"path": "res://Data/InteractionEvent.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://Scenes/Levels/Level.gd"
+}, {
 "base": "Reference",
 "class": "ResourceAsyncLoader",
 "language": "GDScript",
 "path": "res://Utilities/ResourceAsyncLoader.gd"
+}, {
+"base": "Node",
+"class": "Trait",
+"language": "GDScript",
+"path": "res://Data/Traits/Trait.gd"
 } ]
 _global_script_class_icons={
 "Attendee": "",
 "Draggable": "",
 "DropZone": "",
 "GameData": "",
-"ResourceAsyncLoader": ""
+"GenericLikeTrait": "",
+"InteractionEvent": "",
+"Level": "",
+"ResourceAsyncLoader": "",
+"Trait": ""
 }
 
 [addons]
