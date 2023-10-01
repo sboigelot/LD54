@@ -16,7 +16,6 @@ func _input(event):
 func _on_QuitConfirmationDialog_confirmed():
 	Game.transition_to_scene("res://Scenes/MainMenu.tscn")
 
-
 func _on_AttendeeDetailWindowDialog_show_tooltip(content):
 	$LevelUIControl/TooltipPopup.show_tooltip(content)
 

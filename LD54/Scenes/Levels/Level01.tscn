@@ -1,19 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Components/Attendee/Attendee.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/DropZones/DropZone.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Images/Avatars/body1.svg" type="Texture" id=4]
 [ext_resource path="res://Images/Avatars/hair1_grey.svg" type="Texture" id=5]
 [ext_resource path="res://Images/Avatars/eye_green.svg" type="Texture" id=6]
 [ext_resource path="res://Images/Avatars/hair1_brown.svg" type="Texture" id=7]
 [ext_resource path="res://Images/Avatars/face_thin_light.svg" type="Texture" id=8]
 [ext_resource path="res://Images/Avatars/body2.svg" type="Texture" id=9]
-[ext_resource path="res://Images/Avatars/eye_brown.svg" type="Texture" id=10]
 [ext_resource path="res://Images/Avatars/face_light.svg" type="Texture" id=11]
-[ext_resource path="res://Images/Avatars/face_thin_dark.svg" type="Texture" id=12]
 [ext_resource path="res://Images/Avatars/face_dark.svg" type="Texture" id=13]
-[ext_resource path="res://Images/Avatars/hair1_blonde.svg" type="Texture" id=14]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -58,7 +54,6 @@ position = Vector2( 583, 504 )
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 8 )
-body_texture = ExtResource( 4 )
 
 [node name="Attendee2" parent="Attendees" instance=ExtResource( 2 )]
 position = Vector2( 1351, 390 )
@@ -71,9 +66,6 @@ body_texture = ExtResource( 9 )
 [node name="Attendee3" parent="Attendees" instance=ExtResource( 2 )]
 position = Vector2( 955, 752 )
 full_name = "Andrea"
-hair_texture = ExtResource( 14 )
-eyes_texture = ExtResource( 10 )
-face_texture = ExtResource( 12 )
 body_texture = ExtResource( 9 )
 
 [node name="Attendee4" parent="Attendees" instance=ExtResource( 2 )]
@@ -82,4 +74,3 @@ full_name = "Pascal"
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 13 )
-body_texture = ExtResource( 4 )

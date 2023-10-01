@@ -8,6 +8,7 @@ var attendee
 var un_invited_zone
 var assigned_seat
 var pre_drag_assigned_seat
+var dropzone_meta
 
 var move_threshold: float = 5.0
 var speed: float = 1500.0
@@ -57,7 +58,8 @@ func on_drop():
 func search_drop_zone():
 	var drop_zones = get_drop_zones()
 	for drop_zone in drop_zones:
-		if not drop_zone.capture(global_position):
+#		if not drop_zone.capture(global_position):
+		if not drop_zone.bounds_intersect(self):
 			continue
 			
 		if drop_zone.has_free_space(self):
@@ -66,7 +68,7 @@ func search_drop_zone():
 			
 		if drop_zone.can_swap(self):
 			if pre_drag_assigned_seat != null:
-				drop_zone.content.move_to_drop_zone(pre_drag_assigned_seat)
+				drop_zone.content.move_to_drop_zone(pre_drag_assigned_seat, true)
 			elif un_invited_zone != null:
 				drop_zone.content.un_invite(true)
 			else:
@@ -107,39 +109,19 @@ func move_to_global_position(pos:Vector2, anim:bool):
 	destination = pos
 	
 	if assigned_seat != null:
-		if assigned_seat.single_content:
-			assigned_seat.content = null
-		elif self in assigned_seat.items:
-			assigned_seat.items.erase(self)
-			reorganize_dropzone_items(assigned_seat)
+		assigned_seat.remove_item(self)
 		assigned_seat = null
+		
 	update_seat_label()
 	LevelUi.update_attendee_details(attendee)
 
 func move_to_drop_zone(drop_zone, anim:bool=false):
-	
-	var drop_pos = drop_zone.global_position
-	
+
+	drop_zone.add_item(self, anim)
 	assigned_seat = drop_zone
-	if assigned_seat.single_content:
-		assigned_seat.content = self
-	elif not self in assigned_seat.items:
-		drop_pos += Vector2(0, vertical_spacer * assigned_seat.items.size())
-		assigned_seat.items.append(self)
+	
 	update_seat_label()
 	LevelUi.update_attendee_details(attendee)
-	
-	if not anim:
-		global_position = drop_pos
-	destination = drop_pos
-	
-func reorganize_dropzone_items(drop_zone):
-	var drop_pos = drop_zone.global_position
-	
-	for child in drop_zone.items:
-		child.global_position = drop_pos
-		child.destination = drop_pos
-		drop_pos += Vector2(0, vertical_spacer)
 	
 func _on_Invitation_input_event(viewport, event, shape_idx):
 	handle_input_event(event)

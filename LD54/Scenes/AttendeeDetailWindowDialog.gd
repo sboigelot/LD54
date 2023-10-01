@@ -32,6 +32,8 @@ func _process(delta):
 		rect_position = mousepos - drag_offset
 		
 func _on_MainContainer_gui_input(event):
+	if mouse_default_cursor_shape != CURSOR_POINTING_HAND:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			dragging = true

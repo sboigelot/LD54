@@ -34,6 +34,6 @@ func handle_input_event(event):
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("drag")
 			emit_signal("select")
-		elif event.button_index == BUTTON_LEFT and !event.pressed:
+		elif dragging and event.button_index == BUTTON_LEFT and !event.pressed:
 			emit_signal("drop")
 		get_tree().set_input_as_handled() 
