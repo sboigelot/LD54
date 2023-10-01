@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Components/Attendee/Attendee.tscn" type="PackedScene" id=2]
@@ -11,7 +11,11 @@
 [ext_resource path="res://Images/Avatars/body2.svg" type="Texture" id=9]
 [ext_resource path="res://Components/Table.gd" type="Script" id=10]
 [ext_resource path="res://Images/Avatars/face_light.svg" type="Texture" id=11]
+[ext_resource path="res://Images/Avatars/body3.svg" type="Texture" id=12]
 [ext_resource path="res://Images/Avatars/face_dark.svg" type="Texture" id=13]
+[ext_resource path="res://Images/Avatars/hair1_woman_blonde.svg" type="Texture" id=14]
+[ext_resource path="res://Images/Avatars/body_woman_green.svg" type="Texture" id=15]
+[ext_resource path="res://Data/Traits/ExTrait.gd" type="Script" id=16]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1471, 57, 1481, 933, 1402, 614, 1317, 873, 1101, 482, 37, 53, 903, 569, 915, 892, 803, 897, 769, 640, 616, 608, 377, 655, 97, 1065, 373, 923, 573, 993 )
@@ -20,10 +24,48 @@ outlines = [ PoolVector2Array( 37, 53, 1471, 57, 1481, 933, 97, 1065 ), PoolVect
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
+np_groom = NodePath("HonorTable/Groom")
+np_bride = NodePath("HonorTable/Bride")
+np_meet_groom_pos2d = NodePath("HonorTable/MeetGroomPosition2D")
+np_meet_bride_pos2d = NodePath("HonorTable/MeetBridePosition2D")
 np_attendee_start_pos2d = NodePath("AttendeeStartPosition2D")
 
+[node name="AttendeeStartPosition2D" type="Position2D" parent="."]
+position = Vector2( 1156, -103 )
+
+[node name="HonorTable" type="Node2D" parent="."]
+
+[node name="Groom" parent="HonorTable" instance=ExtResource( 2 )]
+position = Vector2( 175, 135 )
+hair_texture = ExtResource( 7 )
+face_texture = ExtResource( 11 )
+body_texture = ExtResource( 12 )
+
+[node name="AttendeeVisual" parent="HonorTable/Groom" index="0"]
+visible = true
+
+[node name="Invitation" parent="HonorTable/Groom" index="1"]
+visible = false
+
+[node name="Bride" parent="HonorTable" instance=ExtResource( 2 )]
+position = Vector2( 337, 137 )
+hair_texture = ExtResource( 14 )
+body_texture = ExtResource( 15 )
+
+[node name="AttendeeVisual" parent="HonorTable/Bride" index="0"]
+visible = true
+
+[node name="Invitation" parent="HonorTable/Bride" index="1"]
+visible = false
+
+[node name="MeetGroomPosition2D" type="Position2D" parent="HonorTable"]
+position = Vector2( 175, 270 )
+
+[node name="MeetBridePosition2D" type="Position2D" parent="HonorTable"]
+position = Vector2( 341, 275 )
+
 [node name="Table1" type="Node2D" parent="."]
-position = Vector2( -846, 52 )
+position = Vector2( -340, -447 )
 script = ExtResource( 10 )
 
 [node name="Seat1" parent="Table1" instance=ExtResource( 3 )]
@@ -43,7 +85,7 @@ position = Vector2( 1557, 852 )
 seat_name = "Seat 4"
 
 [node name="Table2" type="Node2D" parent="."]
-position = Vector2( -1175, -316 )
+position = Vector2( -1182, -219 )
 script = ExtResource( 10 )
 
 [node name="Seat1" parent="Table2" instance=ExtResource( 3 )]
@@ -98,6 +140,10 @@ topic = "Car"
 script = ExtResource( 4 )
 topic = "Space"
 
+[node name="ExTrait" type="Node" parent="Attendees/Filip"]
+script = ExtResource( 16 )
+of_bride = true
+
 [node name="Benoit" parent="Attendees" instance=ExtResource( 2 )]
 position = Vector2( 1650, 290 )
 full_name = "Benoit"
@@ -129,6 +175,10 @@ script = ExtResource( 4 )
 topic = "Car"
 dislike = true
 
+[node name="ExTrait" type="Node" parent="Attendees/Andrea"]
+script = ExtResource( 16 )
+of_groom = true
+
 [node name="Pascal" parent="Attendees" instance=ExtResource( 2 )]
 position = Vector2( 1659, 512 )
 full_name = "Pascal"
@@ -140,10 +190,10 @@ face_texture = ExtResource( 13 )
 script = ExtResource( 4 )
 topic = "Space"
 
-[node name="AttendeeStartPosition2D" type="Position2D" parent="."]
-position = Vector2( 1156, -103 )
-
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 visible = false
 position = Vector2( 15, 4 )
 navpoly = SubResource( 1 )
+
+[editable path="HonorTable/Groom"]
+[editable path="HonorTable/Bride"]

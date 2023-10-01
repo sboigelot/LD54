@@ -23,6 +23,8 @@ func show_detail(attendee:Attendee, show:bool):
 	
 	var traits_str = []
 	for trait in attendee.traits:
+		if trait.get_hidden():
+			continue
 		traits_str.append("[url=%s][color=%s]%s[/color][/url]" % [
 			trait.get_description(),
 			trait.get_color(),

@@ -2,8 +2,6 @@ extends Node2D
 
 class_name Attendee
 
-signal phase_completed
-
 export(String) var full_name
 export(PoolStringArray) var tags
 
@@ -22,30 +20,39 @@ export(Texture) var body_texture
 var traits: Array
 
 var seated: bool = false
+var phase_completed: bool = false
 
 func _ready():
 	$AttendeeVisual.update_sprites(self)
 	$Invitation.update_attendee(self)
 
-func on_new_phase(delay):
-	match Game.Data.current_level.current_phase:
-		Level.PHASE.PLAN:
-			$AttendeeVisual.visible = false
-			$Invitation.visible = true
-			
-		Level.PHASE.SEAT:
-			start_phase_seat(delay)
-			
-		Level.PHASE.EATDRKINK:
-			$AttendeeVisual.visible = true
-			$Invitation.visible = false
-			
-		Level.PHASE.PARTY:
-			$AttendeeVisual.visible = true
-			$Invitation.visible = false
+func show_only_invitation():
+	$AttendeeVisual.visible = false
+	$Invitation.visible = true
+	
+func show_only_attendee_visual():
+	$AttendeeVisual.visible = true
+	$Invitation.visible = false
 
 func is_invited()->bool:
 	return get_seat() != null and get_seat().single_content
+	
+func on_new_phase(delay):
+	phase_completed = false
+	match Game.Data.current_level.current_phase:
+		Level.PHASE.PLAN:
+			show_only_invitation()
+			phase_completed = true
+			
+		Level.PHASE.SEAT:
+			show_only_attendee_visual()
+			start_phase_seat(delay)
+			
+		Level.PHASE.EATDRKINK:
+			show_only_attendee_visual()
+			
+		Level.PHASE.PARTY:
+			show_only_attendee_visual()
 
 func start_phase_seat(delay):
 	
@@ -54,7 +61,6 @@ func start_phase_seat(delay):
 	seated = false
 	$AttendeeVisual.visible = invited
 	$AttendeeVisual.global_position = Game.Data.current_level.attendee_start_pos2D.global_position
-	$Invitation.visible = false
 	
 	if not invited:
 		return
@@ -63,7 +69,7 @@ func start_phase_seat(delay):
 		yield(get_tree().create_timer(delay), "timeout")
 	
 #	Attendee go to bride/groom
-	var bride_position = Vector2(100, 100)
+	var bride_position = Game.Data.current_level.meet_bride_pos2d.global_position
 	$AttendeeVisual.start_move_to(bride_position)
 	yield($AttendeeVisual, "move_completed")
 	
@@ -71,7 +77,7 @@ func start_phase_seat(delay):
 	yield(interact_with_bride(), "completed")
 
 #	Attendee go to groom
-	var groom_position = Vector2(50, 100)
+	var groom_position = Game.Data.current_level.meet_groom_pos2d.global_position
 	$AttendeeVisual.start_move_to(groom_position)
 	yield($AttendeeVisual, "move_completed")
 	
@@ -105,7 +111,7 @@ func start_phase_seat(delay):
 		yield(interact_with_attendee(other_attendee), "completed")
 	
 	table.current_speaker = null
-	emit_signal("phase_completed")
+	phase_completed = true
 	
 func register_trait(trait):
 	if not trait in traits:
@@ -146,7 +152,7 @@ func get_seat_label():
 		]
 
 func interact_with_attendee(other_attendee):
-	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+	yield(get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	for trait in traits:
 		for other_trait in other_attendee.traits:
 
@@ -161,17 +167,17 @@ func interact_with_attendee(other_attendee):
 
 	
 func interact_with_seat_position(seat):
-	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+	yield(get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	for trait in traits:
 		yield(trait.interact_with_seat(seat, Game.Data.current_level.current_phase), "completed")
 	
 func interact_with_bride():
-	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+	yield(get_tree().create_timer(0.2), "timeout")
 	for trait in traits:
 		yield(trait.interact_with_bride(Game.Data.current_level.current_phase), "completed")
 			
 func interact_with_groom():	
-	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+	yield(get_tree().create_timer(0.2), "timeout")
 	for trait in traits:
 		yield(trait.interact_with_groom(Game.Data.current_level.current_phase), "completed")
 

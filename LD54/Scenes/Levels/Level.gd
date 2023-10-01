@@ -12,10 +12,27 @@ var phase_interaction_events = {
 	PHASE.PARTY: []
 } 
 
+export(NodePath) var np_groom
+export(NodePath) var np_bride
+export(NodePath) var np_meet_groom_pos2d
+export(NodePath) var np_meet_bride_pos2d
 export(NodePath) var np_attendee_start_pos2d
+
+onready var groom = get_node(np_groom)
+onready var bride = get_node(np_bride)
+onready var meet_groom_pos2d = get_node(np_meet_groom_pos2d) as Position2D
+onready var meet_bride_pos2d = get_node(np_meet_bride_pos2d) as Position2D
 onready var attendee_start_pos2D = get_node(np_attendee_start_pos2d) as Position2D
 
 var tables: Array
+
+func _ready():
+	Game.Data.current_level = self
+	LevelUi.show()
+	un_invite_all()
+	play_current_phase() #hide the Attendee visuals and show invitations
+#	$HonorTable/Groom.show_only_attendee_visual()
+#	$HonorTable/Bride.show_only_attendee_visual()
 
 func register_table(table):
 	if not table in tables:
@@ -40,40 +57,40 @@ func has_interaction(attendee1, trait1, attendee2, trait2)->bool:
 			
 	return false
 	
-
 func add_interaction_event(interaction_event):
 	print(interaction_event.description)
 	phase_interaction_events[current_phase].append(interaction_event)
-
-func _ready():
-	Game.Data.current_level = self
-	LevelUi.show()
-	un_invite_all()
-	trigger_new_phase_all()
-	
+	LevelUi.add_interaction_event(interaction_event)
 	
 func un_invite_all():
 	for attendee in $Attendees.get_children():
 		attendee.un_invite(LevelUi.guess_book)
-		
-func trigger_new_phase_all():
-#		start yield for all attendee ?
-#		for each attendee with x sec delay between each
-	var delay_between_attendee = 1.0
+
+func any_attendee_in_phase()->bool:
+	for attendee in $Attendees.get_children():
+		if not attendee.phase_completed:
+			return true
+	return false
+
+func play_current_phase():
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+#	start yield for all attendee ?
+#	for each attendee with x sec delay between each
+	var delay_between_attendee = 1.1
 	var current_delay = 0.0
 	
 	for attendee in $Attendees.get_children():
 		attendee.on_new_phase(current_delay)
 		if attendee.is_invited():
 			current_delay += delay_between_attendee
+			
+	while(any_attendee_in_phase()):
+		yield(get_tree().create_timer(0.5), "timeout")
 		
+	print("Phase %s completed" % PHASE.keys()[current_phase])
+	
+	
 func next_phase():
 	if current_phase == PHASE.PLAN:
 		current_phase = PHASE.SEAT
-		trigger_new_phase_all()
-#		do not do the collection from the collect_phase_interaction_events() method 
-#		collect_phase_interaction_events()
-
-func collect_phase_interaction_events():
-	for table in tables:
-		table.collect_phase_interaction_events(current_phase)
+		play_current_phase()

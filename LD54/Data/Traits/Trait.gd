@@ -2,9 +2,14 @@ extends Node
 
 class_name Trait
 
+export(bool) var hidden_trait = false
+
 func _ready():
 	get_parent().register_trait(self)
 
+func get_hidden()->bool:
+	return hidden_trait
+	
 func get_identifier()->String:
 	return "Trait"
 	

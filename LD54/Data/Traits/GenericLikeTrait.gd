@@ -42,7 +42,7 @@ func interact_with(other_attendee, other_trait, phase):
 	
 	interaction_event.emote1 = "Happy" if agree else "Angry"
 	interaction_event.emote2 = "Happy" if agree else "Angry"
-	interaction_event.impact = 1
+	interaction_event.impact = 1 if agree else -1
 	interaction_event.description = "%s and %s %s over %s%s" % [
 		get_parent().full_name,
 		other_attendee.full_name,
