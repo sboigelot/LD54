@@ -18,10 +18,10 @@ func get_attendees()->Array:
 		attendees.append(invitation.get_parent())
 	return attendees
 
-func collect_phase_interaction_events(current_phase):
-	var attendees = get_attendees()
-	for attendee in attendees:
-		for other_attendee in attendees:
-			if attendee == other_attendee:
-				continue
-			attendee.interact_with_attendee(other_attendee)
+func everyone_seated()->bool:
+	
+	for attendee in get_attendees():
+		if not attendee.seated:
+			return false
+	
+	return true

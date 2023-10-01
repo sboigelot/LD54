@@ -59,25 +59,22 @@ func un_invite_all():
 		attendee.un_invite(LevelUi.guess_book)
 		
 func trigger_new_phase_all():
+#		start yield for all attendee ?
+#		for each attendee with x sec delay between each
+	var delay_between_attendee = 1.0
+	var current_delay = 0.0
+	
 	for attendee in $Attendees.get_children():
-		attendee.on_new_phase()
+		attendee.on_new_phase(current_delay)
+		if attendee.is_invited():
+			current_delay += delay_between_attendee
 		
 func next_phase():
 	if current_phase == PHASE.PLAN:
-#		Attendee spawn
 		current_phase = PHASE.SEAT
 		trigger_new_phase_all()
-#		start yield for all attendee ?
-#		for each attendee with x sec delay between each
-#		Attendee go to bride/groom
-#		Attendee interract with bride/groom
-#		Attendee interract with bride/groom
-#		Attendee go to seat
-#		Attendee interact with seat
-#		Attendee wait for everyone at table
-#		Attendee interract at table
 #		do not do the collection from the collect_phase_interaction_events() method 
-		collect_phase_interaction_events()
+#		collect_phase_interaction_events()
 
 func collect_phase_interaction_events():
 	for table in tables:
