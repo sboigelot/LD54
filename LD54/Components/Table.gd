@@ -1,5 +1,7 @@
 extends Node2D
 
+var current_speaker
+
 func _ready():
 	get_parent().register_table(self)
 

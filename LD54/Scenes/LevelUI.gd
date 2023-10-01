@@ -35,3 +35,6 @@ func _on_EndPlanButton_pressed():
 		$LevelUIControl/GuestBook.hide()
 		$LevelUIControl/AttendeeDetailWindowDialog.hide()
 		$LevelUIControl/EndPlanButton.disabled = true
+
+func _on_SpeedButton_toggled(button_pressed):
+	Engine.time_scale = 5.0 if button_pressed else 1.0

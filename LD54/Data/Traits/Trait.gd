@@ -17,14 +17,21 @@ func get_color()->String:
 func get_description()->String:
 	return "Description"
 	
-func interact_with(other_attendee, other_trait, phase)->InteractionEvent:
-	return null
+func interact_with(other_attendee, other_trait, phase):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	
-func interact_with_seat(seqt, phase)->InteractionEvent:
-	return null
+func interact_with_seat(seqt, phase):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	
-func interact_with_bride(phase)->InteractionEvent:
-	return null
-	
-func interact_with_groom(phase)->InteractionEvent:
-	return null
+func interact_with_bride(phase):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+
+func interact_with_groom(phase):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+
+func interaction_already_happend(other_attendee, other_trait)->bool:
+	return Game.Data.current_level.has_interaction(
+		get_parent().full_name, 
+		self.get_identifier(), 
+		other_attendee.full_name, 
+		other_trait.get_identifier())

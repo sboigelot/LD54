@@ -23,6 +23,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="DebugRichTextLabel" type="RichTextLabel" parent="LevelUIControl"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -263,7 +264,7 @@ margin_right = 302.0
 margin_bottom = 55.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Guess Book"
+text = "Guest Book"
 align = 1
 
 [node name="Separator" type="ColorRect" parent="LevelUIControl/GuestBook/MarginContainer/VBoxContainer"]
@@ -326,6 +327,14 @@ margin_right = 87.0
 margin_bottom = 294.0
 text = "END PLAN"
 
+[node name="SpeedButton" type="Button" parent="."]
+margin_left = 175.0
+margin_top = 274.0
+margin_right = 244.0
+margin_bottom = 294.0
+toggle_mode = true
+text = "SpeedUp"
+
 [connection signal="hide_tooltip" from="LevelUIControl/AttendeeDetailWindowDialog" to="." method="_on_AttendeeDetailWindowDialog_hide_tooltip"]
 [connection signal="show_tooltip" from="LevelUIControl/AttendeeDetailWindowDialog" to="." method="_on_AttendeeDetailWindowDialog_show_tooltip"]
 [connection signal="gui_input" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
@@ -340,3 +349,4 @@ text = "END PLAN"
 [connection signal="pressed" from="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/Menu/PrevPageButton" to="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone" method="_on_PrevPageButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/Menu/NextPageButton" to="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone" method="_on_NextPageButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/EndPlanButton" to="." method="_on_EndPlanButton_pressed"]
+[connection signal="toggled" from="SpeedButton" to="." method="_on_SpeedButton_toggled"]

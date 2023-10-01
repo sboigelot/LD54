@@ -21,38 +21,36 @@ func register_table(table):
 	if not table in tables:
 		tables.append(table)
 
-func has_interaction_event(interaction_event)->bool:
+func has_interaction(attendee1, trait1, attendee2, trait2)->bool:
 	if not phase_interaction_events.has(current_phase):
 		return false
 		
 	for old_event in phase_interaction_events[current_phase]:
-		if (interaction_event.attendee1 == old_event.attendee1 and
-			interaction_event.trait1 == old_event.trait1 and
-			interaction_event.attendee2 == old_event.attendee2 and
-			interaction_event.trait2 == old_event.trait2):
+		if (old_event.attendee1 == attendee1 and
+			old_event.trait1 == trait1 and
+			old_event.attendee2 == attendee2 and
+			old_event.trait2 == trait2):
 			return true
 			
-		if (interaction_event.attendee1 == old_event.attendee2 and
-			interaction_event.trait1 == old_event.trait2 and
-			interaction_event.attendee2 == old_event.attendee1 and
-			interaction_event.trait2 == old_event.trait1):
+		if (old_event.attendee1 == attendee2 and
+			old_event.trait1 == trait2 and
+			old_event.attendee2 == attendee1 and
+			old_event.trait2 == trait1):
 			return true
 			
 	return false
+	
 
 func add_interaction_event(interaction_event):
-	if not phase_interaction_events.has(current_phase):
-		return
-
-	if not has_interaction_event(interaction_event):
-		print(interaction_event.description)
-		phase_interaction_events[current_phase].append(interaction_event)
+	print(interaction_event.description)
+	phase_interaction_events[current_phase].append(interaction_event)
 
 func _ready():
 	Game.Data.current_level = self
 	LevelUi.show()
 	un_invite_all()
 	trigger_new_phase_all()
+	
 	
 func un_invite_all():
 	for attendee in $Attendees.get_children():

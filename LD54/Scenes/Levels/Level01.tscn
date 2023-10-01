@@ -144,5 +144,6 @@ topic = "Space"
 position = Vector2( 1156, -103 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+visible = false
 position = Vector2( 15, 4 )
 navpoly = SubResource( 1 )
