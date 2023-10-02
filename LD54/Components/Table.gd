@@ -3,7 +3,7 @@ extends Node2D
 var current_speaker
 
 func _ready():
-	get_parent().register_table(self)
+	get_parent().get_parent().register_table(self)
 
 func get_attendees()->Array:
 	var invitations = []

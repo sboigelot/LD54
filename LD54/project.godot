@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utilities/AutoScrollContainer.gd"
 }, {
+"base": "Trait",
+"class": "DancerTrait",
+"language": "GDScript",
+"path": "res://Data/Traits/DancerTrait.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Draggable",
 "language": "GDScript",
@@ -39,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Data/Traits/ExTrait.gd"
 }, {
+"base": "Trait",
+"class": "FamilyTrait",
+"language": "GDScript",
+"path": "res://Data/Traits/FamilyTrait.gd"
+}, {
 "base": "Node",
 "class": "GameData",
 "language": "GDScript",
@@ -49,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Data/Traits/GenericLikeTrait.gd"
 }, {
+"base": "Trait",
+"class": "GourmetTrait",
+"language": "GDScript",
+"path": "res://Data/Traits/GourmetTrait.gd"
+}, {
 "base": "Node",
 "class": "InteractionEvent",
 "language": "GDScript",
@@ -58,6 +73,11 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://Scenes/Levels/Level.gd"
+}, {
+"base": "Trait",
+"class": "OppositeTrait",
+"language": "GDScript",
+"path": "res://Data/Traits/OppositeTrait.gd"
 }, {
 "base": "Reference",
 "class": "ResourceAsyncLoader",
@@ -73,13 +93,17 @@ _global_script_class_icons={
 "AlcoholicTrait": "",
 "Attendee": "",
 "AutoScrollContainer": "",
+"DancerTrait": "",
 "Draggable": "",
 "DropZone": "",
 "ExTrait": "",
+"FamilyTrait": "",
 "GameData": "",
 "GenericLikeTrait": "",
+"GourmetTrait": "",
 "InteractionEvent": "",
 "Level": "",
+"OppositeTrait": "",
 "ResourceAsyncLoader": "",
 "Trait": ""
 }

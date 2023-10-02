@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Data/Traits/OppositeTrait.gd" type="Script" id=1]
+
+[node name="SmellyTrait" type="Node"]
+script = ExtResource( 1 )
+trigger_phase = 3
+display_name = "Smelly"
+argue_over = "the need of using perfume"
+description = "Doesn't belive in showers"
+opposite_identifier = "Perfume Lover"
+opposite_description = "Became addicted to perfume after seeing a movie"
+happy_impact = 0

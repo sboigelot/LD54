@@ -123,6 +123,10 @@ func start_phase_eatdrink(delay):
 	if delay > 0.0:
 		yield(get_tree().create_timer(delay), "timeout")
 	
+#	Attendee interact with seat
+	yield(interact_with_seat_position(get_seat()), "completed")
+	seated = false
+
 #	Attendee go to buffet location
 	var buffet_position = Game.Data.current_level.buffet_pos2d.global_position
 	$AttendeeVisual.start_move_to(buffet_position)
@@ -147,9 +151,7 @@ func start_phase_eatdrink(delay):
 #	Attendee go to seat
 	$AttendeeVisual.start_move_to(seat_position)
 	yield($AttendeeVisual, "move_completed")
-	
-#	Attendee interact with seat
-#	yield(interact_with_seat_position(get_seat()), "completed")	
+		
 	seated = true
 
 #	Attendee wait for everyone at table
@@ -184,6 +186,10 @@ func start_phase_party(delay):
 			
 	if delay > 0.0:
 		yield(get_tree().create_timer(delay), "timeout")
+	
+#	Attendee interact with seat
+	yield(interact_with_seat_position(get_seat()), "completed")
+	seated = false
 	
 	if go_drink_at_party:		
 	#	Attendee go to bar location

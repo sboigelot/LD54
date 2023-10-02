@@ -1,17 +1,17 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Components/Attendee/Attendee.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Components/DropZones/DropZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Levels/Venue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Data/Traits/GenericLikeTrait.gd" type="Script" id=4]
 [ext_resource path="res://Images/Avatars/hair1_grey.svg" type="Texture" id=5]
 [ext_resource path="res://Images/Avatars/eye_green.svg" type="Texture" id=6]
 [ext_resource path="res://Images/Avatars/hair1_brown.svg" type="Texture" id=7]
 [ext_resource path="res://Images/Avatars/face_thin_light.svg" type="Texture" id=8]
 [ext_resource path="res://Images/Avatars/body2.svg" type="Texture" id=9]
-[ext_resource path="res://Components/Table.gd" type="Script" id=10]
+[ext_resource path="res://Data/Traits/FamilyTrait.gd" type="Script" id=10]
 [ext_resource path="res://Images/Avatars/face_light.svg" type="Texture" id=11]
-[ext_resource path="res://Images/Avatars/body_groom.svg" type="Texture" id=12]
+[ext_resource path="res://Data/Traits/DancerTrait.gd" type="Script" id=12]
 [ext_resource path="res://Images/Avatars/face_dark.svg" type="Texture" id=13]
 [ext_resource path="res://Images/Avatars/hair1_woman_blonde.svg" type="Texture" id=14]
 [ext_resource path="res://Images/Avatars/body_woman_green.svg" type="Texture" id=15]
@@ -19,166 +19,92 @@
 [ext_resource path="res://Images/Avatars/eye_glasses.svg" type="Texture" id=17]
 [ext_resource path="res://Data/Traits/AlcoholicTrait.gd" type="Script" id=18]
 [ext_resource path="res://Images/Avatars/body4.svg" type="Texture" id=19]
-[ext_resource path="res://Images/UIsvg/background.svg" type="Texture" id=20]
-
-[sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 1471, 57, 1481, 933, 1402, 614, 1317, 873, 1101, 482, 37, 53, 903, 569, 915, 892, 803, 897, 769, 640, 616, 608, 377, 655, 97, 1065, 373, 923, 573, 993 )
-polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 2, 1 ), PoolIntArray( 0, 2, 4 ), PoolIntArray( 5, 0, 4, 6 ), PoolIntArray( 6, 7, 8, 9 ), PoolIntArray( 5, 6, 9, 10 ), PoolIntArray( 5, 10, 11 ), PoolIntArray( 12, 5, 11, 13 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 1, 12, 14 ), PoolIntArray( 1, 14, 8, 7 ), PoolIntArray( 1, 7, 3 ) ]
-outlines = [ PoolVector2Array( 37, 53, 1471, 57, 1481, 933, 97, 1065 ), PoolVector2Array( 1101, 482, 903, 569, 915, 892, 1317, 873, 1402, 614 ), PoolVector2Array( 616, 608, 377, 655, 373, 923, 573, 993, 803, 897, 769, 640 ) ]
+[ext_resource path="res://Data/Traits/GourmetTrait.gd" type="Script" id=20]
+[ext_resource path="res://Data/Traits/VeganTrait.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Images/Avatars/hair_bob_brown.svg" type="Texture" id=22]
+[ext_resource path="res://Images/Avatars/body3.svg" type="Texture" id=23]
+[ext_resource path="res://Data/Traits/MessyEaterTrait.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Data/Traits/SmellyTrait.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Images/Avatars/hair_long_black.svg" type="Texture" id=29]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
-np_groom = NodePath("HonorTable/Groom")
-np_bride = NodePath("HonorTable/Bride")
-np_meet_groom_pos2d = NodePath("HonorTable/MeetGroomPosition2D")
-np_meet_bride_pos2d = NodePath("HonorTable/MeetBridePosition2D")
-np_attendee_start_pos2d = NodePath("AttendeeStartPosition2D")
-np_bar_pos2d = NodePath("BarPosition2D")
-np_buffet_pos2d = NodePath("BuffetPosition2D")
-np_dancefloor_pos2d = NodePath("DancefloorPosition2D")
+np_groom = NodePath("Venue/HonorTable/Groom")
+np_bride = NodePath("Venue/HonorTable/Bride")
+np_meet_groom_pos2d = NodePath("Venue/HonorTable/MeetGroomPosition2D")
+np_meet_bride_pos2d = NodePath("Venue/HonorTable/MeetBridePosition2D")
+np_attendee_start_pos2d = NodePath("Venue/AttendeeStartPosition2D")
+np_bar_pos2d = NodePath("Venue/BarPosition2D")
+np_buffet_pos2d = NodePath("Venue/BuffetPosition2D")
+np_dancefloor_pos2d = NodePath("Venue/DancefloorPosition2D")
 
-[node name="Background" type="Sprite" parent="."]
-texture = ExtResource( 20 )
-centered = false
-
-[node name="AttendeeStartPosition2D" type="Position2D" parent="."]
-position = Vector2( 1114, -77 )
-
-[node name="BarPosition2D" type="Position2D" parent="."]
-position = Vector2( 1190, 776 )
-
-[node name="BuffetPosition2D" type="Position2D" parent="."]
-position = Vector2( 1199, 466 )
-
-[node name="DancefloorPosition2D" type="Position2D" parent="."]
-position = Vector2( 481, 796 )
-
-[node name="HonorTable" type="Node2D" parent="."]
-
-[node name="Groom" parent="HonorTable" instance=ExtResource( 2 )]
-position = Vector2( 424, 107 )
-full_name = "Groom"
-hair_texture = ExtResource( 7 )
-eyes_texture = ExtResource( 17 )
-face_texture = ExtResource( 11 )
-body_texture = ExtResource( 12 )
-
-[node name="AttendeeVisual" parent="HonorTable/Groom" index="0"]
-visible = true
-
-[node name="CanvasLayer" parent="HonorTable/Groom" index="1"]
-visible = false
-
-[node name="Bride" parent="HonorTable" instance=ExtResource( 2 )]
-position = Vector2( 534, 104 )
-full_name = "Bride"
-hair_texture = ExtResource( 14 )
-body_texture = ExtResource( 15 )
-
-[node name="AttendeeVisual" parent="HonorTable/Bride" index="0"]
-visible = true
-
-[node name="CanvasLayer" parent="HonorTable/Bride" index="1"]
-visible = false
-
-[node name="MeetGroomPosition2D" type="Position2D" parent="HonorTable"]
-position = Vector2( 416, 322 )
-
-[node name="MeetBridePosition2D" type="Position2D" parent="HonorTable"]
-position = Vector2( 537, 317 )
-
-[node name="Table 1" type="Node2D" parent="."]
-position = Vector2( 927, 476 )
-script = ExtResource( 10 )
-
-[node name="Seat1" parent="Table 1" instance=ExtResource( 3 )]
-position = Vector2( 106, -67 )
-seat_name = "Seat 1"
-near_buffet = true
-
-[node name="Seat2" parent="Table 1" instance=ExtResource( 3 )]
-position = Vector2( -109, 68 )
-seat_name = "Seat 2"
-near_groom_table = true
-
-[node name="Seat3" parent="Table 1" instance=ExtResource( 3 )]
-position = Vector2( -107, -70 )
-seat_name = "Seat 3"
-near_groom_table = true
-
-[node name="Seat4" parent="Table 1" instance=ExtResource( 3 )]
-position = Vector2( 106, 67 )
-seat_name = "Seat 4"
-near_buffet = true
-
-[node name="Table 2" type="Node2D" parent="."]
-position = Vector2( 481, 471 )
-script = ExtResource( 10 )
-
-[node name="Seat1" parent="Table 2" instance=ExtResource( 3 )]
-position = Vector2( 103, -65 )
-seat_name = "Seat 1"
-near_groom_table = true
-
-[node name="Seat2" parent="Table 2" instance=ExtResource( 3 )]
-position = Vector2( -116, 73 )
-seat_name = "Seat 2"
-near_dance_floor = true
-
-[node name="Seat3" parent="Table 2" instance=ExtResource( 3 )]
-position = Vector2( -112, -63 )
-seat_name = "Seat 3"
-near_groom_table = true
-
-[node name="Seat4" parent="Table 2" instance=ExtResource( 3 )]
-position = Vector2( 107, 71 )
-seat_name = "Seat 4"
-near_dance_floor = true
-
-[node name="Table 3" type="Node2D" parent="."]
-position = Vector2( 926, 779 )
-script = ExtResource( 10 )
-
-[node name="Seat1" parent="Table 3" instance=ExtResource( 3 )]
-position = Vector2( 110, -66 )
-seat_name = "Seat 1"
-near_bar = true
-
-[node name="Seat2" parent="Table 3" instance=ExtResource( 3 )]
-position = Vector2( -104, 71 )
-seat_name = "Seat 2"
-near_dance_floor = true
-
-[node name="Seat3" parent="Table 3" instance=ExtResource( 3 )]
-position = Vector2( -104, -69 )
-seat_name = "Seat 3"
-near_dance_floor = true
-
-[node name="Seat4" parent="Table 3" instance=ExtResource( 3 )]
-position = Vector2( 110, 70 )
-seat_name = "Seat 4"
-near_bar = true
+[node name="Venue" parent="." instance=ExtResource( 3 )]
 
 [node name="Attendees" type="Node2D" parent="."]
 
-[node name="Filip" parent="Attendees" instance=ExtResource( 2 )]
+[node name="Gordon" parent="Attendees" instance=ExtResource( 2 )]
+full_name = "Gordon"
+
+[node name="GourmetTrait" type="Node" parent="Attendees/Gordon"]
+script = ExtResource( 20 )
+
+[node name="Kevin" parent="Attendees" instance=ExtResource( 2 )]
+full_name = "Kevin"
+
+[node name="GourmetTrait" type="Node" parent="Attendees/Kevin"]
+script = ExtResource( 20 )
+oposite = true
+
+[node name="Disabled" type="Node2D" parent="."]
+visible = false
+
+[node name="Filip" parent="Disabled" instance=ExtResource( 2 )]
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 8 )
 
-[node name="LikeCar" type="Node" parent="Attendees/Filip"]
+[node name="LikeCar" type="Node" parent="Disabled/Filip"]
 script = ExtResource( 4 )
 topic = "Car"
 
-[node name="LikeSpace" type="Node" parent="Attendees/Filip"]
+[node name="LikeSpace" type="Node" parent="Disabled/Filip"]
 script = ExtResource( 4 )
 topic = "Space"
 
-[node name="ExTrait" type="Node" parent="Attendees/Filip"]
+[node name="Michael" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Michael"
+hair_texture = ExtResource( 22 )
+face_texture = ExtResource( 8 )
+body_texture = ExtResource( 23 )
+
+[node name="LikeNature" type="Node" parent="Disabled/Michael"]
+script = ExtResource( 4 )
+topic = "Nature"
+
+[node name="VeganTrait" parent="Disabled/Michael" instance=ExtResource( 21 )]
+
+[node name="ExTrait" type="Node" parent="Disabled/Michael"]
 script = ExtResource( 16 )
 of_bride = true
 
-[node name="Benoit" parent="Attendees" instance=ExtResource( 2 )]
+[node name="Karene" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Karene"
+hair_texture = ExtResource( 14 )
+eyes_texture = ExtResource( 17 )
+face_texture = ExtResource( 13 )
+body_texture = ExtResource( 15 )
+
+[node name="LikeNature" type="Node" parent="Disabled/Karene"]
+script = ExtResource( 4 )
+topic = "Nature"
+
+[node name="VeganTrait" parent="Disabled/Karene" instance=ExtResource( 21 )]
+
+[node name="ExTrait" type="Node" parent="Disabled/Karene"]
+script = ExtResource( 16 )
+of_groom = true
+
+[node name="Benoit" parent="Disabled" instance=ExtResource( 2 )]
 full_name = "Benoit"
 hair_texture = ExtResource( 5 )
 eyes_texture = ExtResource( 6 )
@@ -186,57 +112,108 @@ face_texture = ExtResource( 11 )
 body_texture = ExtResource( 9 )
 go_dance_at_party = false
 
-[node name="HateFortnite" type="Node" parent="Attendees/Benoit"]
+[node name="HateFortnite" type="Node" parent="Disabled/Benoit"]
 script = ExtResource( 4 )
 topic = "Fortnite"
 dislike = true
 
-[node name="LikeCar" type="Node" parent="Attendees/Benoit"]
+[node name="LikeCar" type="Node" parent="Disabled/Benoit"]
 script = ExtResource( 4 )
 topic = "Car"
 
-[node name="Andrea" parent="Attendees" instance=ExtResource( 2 )]
+[node name="Andrea" parent="Disabled" instance=ExtResource( 2 )]
 full_name = "Andrea"
 body_texture = ExtResource( 9 )
 go_dance_at_party = false
 
-[node name="LikeFotnite" type="Node" parent="Attendees/Andrea"]
+[node name="LikeFotnite" type="Node" parent="Disabled/Andrea"]
 script = ExtResource( 4 )
 topic = "Fortnite"
 
-[node name="HateCar" type="Node" parent="Attendees/Andrea"]
+[node name="HateCar" type="Node" parent="Disabled/Andrea"]
 script = ExtResource( 4 )
 topic = "Car"
 dislike = true
 
-[node name="ExTrait" type="Node" parent="Attendees/Andrea"]
-script = ExtResource( 16 )
-of_groom = true
-
-[node name="Pascal" parent="Attendees" instance=ExtResource( 2 )]
+[node name="Pascal" parent="Disabled" instance=ExtResource( 2 )]
 full_name = "Pascal"
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 13 )
 
-[node name="LikeSpace" type="Node" parent="Attendees/Pascal"]
+[node name="LikeSpace" type="Node" parent="Disabled/Pascal"]
 script = ExtResource( 4 )
 topic = "Space"
 
-[node name="UncleBob" parent="Attendees" instance=ExtResource( 2 )]
+[node name="VeganTrait" parent="Disabled/Pascal" instance=ExtResource( 21 )]
+is_opposite = true
+
+[node name="UncleBob" parent="Disabled" instance=ExtResource( 2 )]
 full_name = "Uncle Bob"
 hair_texture = ExtResource( 5 )
 face_texture = ExtResource( 8 )
 body_texture = ExtResource( 19 )
 go_drink_at_party = true
 
-[node name="AlcoholicTrait" type="Node" parent="Attendees/UncleBob"]
+[node name="FamilyTrait" type="Node" parent="Disabled/UncleBob"]
+script = ExtResource( 10 )
+
+[node name="LikeCar" type="Node" parent="Disabled/UncleBob"]
+script = ExtResource( 4 )
+topic = "Car"
+
+[node name="AlcoholicTrait" type="Node" parent="Disabled/UncleBob"]
 script = ExtResource( 18 )
 
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
-visible = false
-position = Vector2( 15, 4 )
-navpoly = SubResource( 1 )
+[node name="Callum" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Callum"
+hair_texture = null
+eyes_texture = ExtResource( 17 )
+body_texture = ExtResource( 9 )
 
-[editable path="HonorTable/Groom"]
-[editable path="HonorTable/Bride"]
+[node name="LikesJewelry" type="Node" parent="Disabled/Callum"]
+script = ExtResource( 4 )
+topic = "Jewelry"
+
+[node name="SmellyTrait" parent="Disabled/Callum" instance=ExtResource( 25 )]
+
+[node name="Tom" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Tom"
+hair_texture = ExtResource( 29 )
+face_texture = ExtResource( 11 )
+body_texture = ExtResource( 19 )
+
+[node name="LikesJewelry" type="Node" parent="Disabled/Tom"]
+script = ExtResource( 4 )
+topic = "Jewelry"
+
+[node name="SmellyTrait" parent="Disabled/Tom" instance=ExtResource( 25 )]
+is_opposite = true
+
+[node name="Pumbaa" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Pumbaa"
+
+[node name="MessyEaterTrait" parent="Disabled/Pumbaa" instance=ExtResource( 24 )]
+
+[node name="LikeFotnite" type="Node" parent="Disabled/Pumbaa"]
+script = ExtResource( 4 )
+topic = "Fortnite"
+
+[node name="Berlioz" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Berlioz"
+
+[node name="MessyEaterTrait" parent="Disabled/Berlioz" instance=ExtResource( 24 )]
+is_opposite = true
+
+[node name="Sammy" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Sammy"
+
+[node name="DancerTrait" type="Node" parent="Disabled/Sammy"]
+script = ExtResource( 12 )
+
+[node name="Yvan" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Yvan"
+
+[node name="DancerTrait" type="Node" parent="Disabled/Yvan"]
+script = ExtResource( 12 )
+oposite = true

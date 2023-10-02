@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="120"
+   height="120"
+   viewBox="0 0 120 120"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="human-designs.svg"
+   inkscape:export-filename="groom.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="4.7906484"
+     inkscape:cx="35.590172"
+     inkscape:cy="52.706853"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3"
+     showguides="false"
+     inkscape:export-bgcolor="#ffffff00" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch2"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="head"
+     style="display:inline">
+    <path
+       id="path3"
+       style="display:inline;fill:#4b798f;stroke:#000000;stroke-width:2;stroke-dasharray:none"
+       inkscape:label="eye"
+       d="M 73.82115,35.82739 A 3.8936493,3.8936493 0 0 1 69.9275,39.721039 3.8936493,3.8936493 0 0 1 66.033851,35.82739 3.8936493,3.8936493 0 0 1 69.9275,31.933739 3.8936493,3.8936493 0 0 1 73.82115,35.82739 Z" />
+    <path
+       id="path11"
+       style="display:inline;fill:#4b798f;stroke:#000000;stroke-width:2;stroke-dasharray:none"
+       inkscape:label="eye"
+       d="M 56.055899,35.82739 A 3.8936493,3.8936493 0 0 1 52.16225,39.721039 3.8936493,3.8936493 0 0 1 48.2686,35.82739 3.8936493,3.8936493 0 0 1 52.16225,31.933739 3.8936493,3.8936493 0 0 1 56.055899,35.82739 Z" />
+    <path
+       id="path19"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:2.07335;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="glasses"
+       d="m 79.601917,36.261841 c 0,4.029455 -4.519046,7.295972 -8.23507,7.295972 -8.36547,0 -8.131164,-3.481226 -8.131165,-7.295972 -10e-7,-3.814747 -0.972315,-7.295976 8.131165,-7.295976 3.716025,0 8.235072,3.26652 8.23507,7.295976 z"
+       sodipodi:nodetypes="ssass" />
+    <path
+       id="path20"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:2.07347;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="glasses"
+       d="m 58.903215,36.209656 c 0,4.02942 0.829426,7.295909 -8.495939,7.295909 -3.716508,0 -8.39202,-3.26649 -8.39202,-7.295909 -2e-6,-4.029421 4.675922,-7.240597 8.39202,-7.295913 9.915772,-0.147601 8.495941,3.266492 8.495939,7.295913 z"
+       sodipodi:nodetypes="sssss" />
+    <path
+       style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
+       d="m 58.916868,35.711512 h 4.48791 v 0 0"
+       id="path21" />
+  </g>
+</svg>

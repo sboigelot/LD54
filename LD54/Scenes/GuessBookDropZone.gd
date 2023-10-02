@@ -58,18 +58,26 @@ func arrange_items(anim:bool=false):
 	var row_index = 0
 	
 	var page_index = 0
-	var min_child_index = current_page * rows * columns
-	var max_child_index = (current_page+1) * rows * columns
+	var min_child_index = (current_page * rows * columns)
+	var max_child_index = ((current_page+1) * rows * columns) - 1
 	
 	var cell_width = rect_size.x / columns
 	var cell_height = rect_size.y / rows
 	
 	var initial_margin = Vector2(cell_width / 2, cell_height / 2)
 	
-	for child in items:
+	for child_index in items.size():
 		
-		var child_index = column_index + (row_index * columns) + (page_index * rows * column_index)
-		child.visible = min_child_index <= child_index and child_index < max_child_index
+		var child = items[child_index]
+		
+#		var local_cell_index = column_index + (row_index * columns) + (page_index * rows * column_index)
+		child.visible = min_child_index <= child_index and child_index <= max_child_index
+		
+		if child_index == 10:
+			pass
+		
+		if child_index > max_child_index:
+			pass
 		
 		if child.visible:
 			var cell_pos = rect_global_position

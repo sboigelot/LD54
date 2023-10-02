@@ -14,7 +14,6 @@ onready var pos_score_bar = get_node(np_pos_score_bar) as ProgressBar
 onready var intro_tuto = get_node(np_intro_tuto) as AcceptDialog
 onready var intro_tuto_text = get_node(np_intro_tuto_text) as RichTextLabel
 
-
 export(NodePath) var np_phase_bar
 export(NodePath) var np_speed_button
 export(NodePath) var np_end_plan_button
