@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://Utilities/AutoScrollContainer.gd"
 }, {
 "base": "Trait",
+"class": "CostumeConflictTrait",
+"language": "GDScript",
+"path": "res://Data/Traits/CostumeConflictTrait.gd"
+}, {
+"base": "Trait",
 "class": "DancerTrait",
 "language": "GDScript",
 "path": "res://Data/Traits/DancerTrait.gd"
@@ -75,6 +80,11 @@ _global_script_classes=[ {
 "path": "res://Scenes/Levels/Level.gd"
 }, {
 "base": "Trait",
+"class": "MafiaTrait",
+"language": "GDScript",
+"path": "res://Data/Traits/MafiaTrait.gd"
+}, {
+"base": "Trait",
 "class": "OppositeTrait",
 "language": "GDScript",
 "path": "res://Data/Traits/OppositeTrait.gd"
@@ -83,6 +93,11 @@ _global_script_classes=[ {
 "class": "ResourceAsyncLoader",
 "language": "GDScript",
 "path": "res://Utilities/ResourceAsyncLoader.gd"
+}, {
+"base": "Trait",
+"class": "SingleTrait",
+"language": "GDScript",
+"path": "res://Data/Traits/SingleTrait.gd"
 }, {
 "base": "Node",
 "class": "Trait",
@@ -93,6 +108,7 @@ _global_script_class_icons={
 "AlcoholicTrait": "",
 "Attendee": "",
 "AutoScrollContainer": "",
+"CostumeConflictTrait": "",
 "DancerTrait": "",
 "Draggable": "",
 "DropZone": "",
@@ -103,8 +119,10 @@ _global_script_class_icons={
 "GourmetTrait": "",
 "InteractionEvent": "",
 "Level": "",
+"MafiaTrait": "",
 "OppositeTrait": "",
 "ResourceAsyncLoader": "",
+"SingleTrait": "",
 "Trait": ""
 }
 

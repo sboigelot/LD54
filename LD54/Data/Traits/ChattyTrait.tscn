@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Data/Traits/OppositeTrait.gd" type="Script" id=1]
+
+[node name="ChattyTrait" type="Node"]
+script = ExtResource( 1 )
+trigger_phase = 1
+display_name = "Chatty"
+argue_over = "speaking a lot"
+description = "Really loves speaking with everyone"
+opposite_identifier = "Reserved"
+opposite_description = "Prefer to be left alone"
+happy_impact = 2
+happy_opposite_impact = 0
+angry_impact = -1

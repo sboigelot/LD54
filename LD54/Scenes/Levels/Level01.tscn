@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Components/Attendee/Attendee.tscn" type="PackedScene" id=2]
@@ -25,7 +25,19 @@
 [ext_resource path="res://Images/Avatars/body3.svg" type="Texture" id=23]
 [ext_resource path="res://Data/Traits/MessyEaterTrait.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Data/Traits/SmellyTrait.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Data/Traits/MafiaTrait.gd" type="Script" id=26]
+[ext_resource path="res://Data/Traits/ChattyTrait.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Images/Avatars/eye_glasses_blue.svg" type="Texture" id=28]
 [ext_resource path="res://Images/Avatars/hair_long_black.svg" type="Texture" id=29]
+[ext_resource path="res://Images/Avatars/hair_long_red.svg" type="Texture" id=30]
+[ext_resource path="res://Images/Avatars/body_woman_whitedress.svg" type="Texture" id=31]
+[ext_resource path="res://Data/Traits/CostumeConflictTrait.gd" type="Script" id=32]
+[ext_resource path="res://Images/Avatars/body_groom.svg" type="Texture" id=33]
+[ext_resource path="res://Images/Avatars/hair_bob_grey.svg" type="Texture" id=34]
+[ext_resource path="res://Images/Avatars/hair_bride_blonde.svg" type="Texture" id=35]
+[ext_resource path="res://Images/Avatars/body_woman_blackdress.svg" type="Texture" id=36]
+[ext_resource path="res://Data/Traits/SingleTrait.gd" type="Script" id=37]
+[ext_resource path="res://Images/Avatars/hair1_woman_blue.svg" type="Texture" id=38]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -42,18 +54,55 @@ np_dancefloor_pos2d = NodePath("Venue/DancefloorPosition2D")
 
 [node name="Attendees" type="Node2D" parent="."]
 
-[node name="Gordon" parent="Attendees" instance=ExtResource( 2 )]
-full_name = "Gordon"
+[node name="Avocado" parent="Attendees" instance=ExtResource( 2 )]
+full_name = "Avocado"
+hair_texture = ExtResource( 38 )
+face_texture = ExtResource( 8 )
+body_texture = ExtResource( 15 )
 
-[node name="GourmetTrait" type="Node" parent="Attendees/Gordon"]
+[node name="SingleTrait" type="Node" parent="Attendees/Avocado"]
+script = ExtResource( 37 )
+build_an_harem = true
+
+[node name="LikesJewelry" type="Node" parent="Attendees/Avocado"]
+script = ExtResource( 4 )
+topic = "Jewelry"
+
+[node name="GourmetTrait" type="Node" parent="Attendees/Avocado"]
 script = ExtResource( 20 )
 
-[node name="Kevin" parent="Attendees" instance=ExtResource( 2 )]
-full_name = "Kevin"
+[node name="Benoit" parent="Attendees" instance=ExtResource( 2 )]
+full_name = "Benoit"
+hair_texture = ExtResource( 5 )
+eyes_texture = ExtResource( 6 )
+face_texture = ExtResource( 11 )
+body_texture = ExtResource( 9 )
+go_dance_at_party = false
 
-[node name="GourmetTrait" type="Node" parent="Attendees/Kevin"]
-script = ExtResource( 20 )
-oposite = true
+[node name="HateFortnite" type="Node" parent="Attendees/Benoit"]
+script = ExtResource( 4 )
+topic = "Fortnite"
+dislike = true
+
+[node name="LikeCar" type="Node" parent="Attendees/Benoit"]
+script = ExtResource( 4 )
+topic = "Car"
+
+[node name="SingleTrait" type="Node" parent="Attendees/Benoit"]
+script = ExtResource( 37 )
+
+[node name="Sammy" parent="Attendees" instance=ExtResource( 2 )]
+full_name = "Sammy"
+
+[node name="DancerTrait" type="Node" parent="Attendees/Sammy"]
+script = ExtResource( 12 )
+
+[node name="LikePets" type="Node" parent="Attendees/Sammy"]
+script = ExtResource( 4 )
+topic = "Pets"
+
+[node name="SingleTrait" type="Node" parent="Attendees/Sammy"]
+script = ExtResource( 37 )
 
 [node name="Disabled" type="Node2D" parent="."]
 visible = false
@@ -103,23 +152,6 @@ topic = "Nature"
 [node name="ExTrait" type="Node" parent="Disabled/Karene"]
 script = ExtResource( 16 )
 of_groom = true
-
-[node name="Benoit" parent="Disabled" instance=ExtResource( 2 )]
-full_name = "Benoit"
-hair_texture = ExtResource( 5 )
-eyes_texture = ExtResource( 6 )
-face_texture = ExtResource( 11 )
-body_texture = ExtResource( 9 )
-go_dance_at_party = false
-
-[node name="HateFortnite" type="Node" parent="Disabled/Benoit"]
-script = ExtResource( 4 )
-topic = "Fortnite"
-dislike = true
-
-[node name="LikeCar" type="Node" parent="Disabled/Benoit"]
-script = ExtResource( 4 )
-topic = "Car"
 
 [node name="Andrea" parent="Disabled" instance=ExtResource( 2 )]
 full_name = "Andrea"
@@ -199,17 +231,72 @@ full_name = "Pumbaa"
 script = ExtResource( 4 )
 topic = "Fortnite"
 
-[node name="Berlioz" parent="Disabled" instance=ExtResource( 2 )]
-full_name = "Berlioz"
+[node name="Kevin" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Kevin"
 
-[node name="MessyEaterTrait" parent="Disabled/Berlioz" instance=ExtResource( 24 )]
+[node name="GourmetTrait" type="Node" parent="Disabled/Kevin"]
+script = ExtResource( 20 )
+oposite = true
+
+[node name="LikePets" type="Node" parent="Disabled/Kevin"]
+script = ExtResource( 4 )
+topic = "Pets"
+
+[node name="Jack" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Jack"
+
+[node name="FamilyTrait" type="Node" parent="Disabled/Jack"]
+script = ExtResource( 10 )
+
+[node name="ChattyTrait" parent="Disabled/Jack" instance=ExtResource( 27 )]
+
+[node name="John" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "John"
+
+[node name="FamilyTrait" type="Node" parent="Disabled/John"]
+script = ExtResource( 10 )
+
+[node name="ChattyTrait" parent="Disabled/John" instance=ExtResource( 27 )]
 is_opposite = true
 
-[node name="Sammy" parent="Disabled" instance=ExtResource( 2 )]
-full_name = "Sammy"
+[node name="Sandra" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Sandra"
+hair_texture = ExtResource( 30 )
+eyes_texture = ExtResource( 28 )
+face_texture = ExtResource( 13 )
+body_texture = ExtResource( 31 )
 
-[node name="DancerTrait" type="Node" parent="Disabled/Sammy"]
-script = ExtResource( 12 )
+[node name="ChattyTrait" parent="Disabled/Sandra" instance=ExtResource( 27 )]
+
+[node name="LikesFolklore" type="Node" parent="Disabled/Sandra"]
+script = ExtResource( 4 )
+topic = "Folklore"
+
+[node name="CostumeConflictTrait" type="Node" parent="Disabled/Sandra"]
+script = ExtResource( 32 )
+hidden_trait = true
+of_bride = true
+
+[node name="Vito" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Vito"
+hair_texture = ExtResource( 34 )
+eyes_texture = ExtResource( 6 )
+face_texture = ExtResource( 11 )
+body_texture = ExtResource( 33 )
+
+[node name="MafiaTrait" type="Node" parent="Disabled/Vito"]
+script = ExtResource( 26 )
+
+[node name="DilikesFolklore" type="Node" parent="Disabled/Vito"]
+script = ExtResource( 4 )
+topic = "Folklore"
+dislike = true
+
+[node name="CostumeConflictTrait" type="Node" parent="Disabled/Vito"]
+script = ExtResource( 32 )
+hidden_trait = true
+of_groom = true
+costume_part = "costume"
 
 [node name="Yvan" parent="Disabled" instance=ExtResource( 2 )]
 full_name = "Yvan"
@@ -217,3 +304,63 @@ full_name = "Yvan"
 [node name="DancerTrait" type="Node" parent="Disabled/Yvan"]
 script = ExtResource( 12 )
 oposite = true
+
+[node name="LikesGeekCulture" type="Node" parent="Disabled/Yvan"]
+script = ExtResource( 4 )
+topic = "Geek culture"
+
+[node name="Gordon" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Gordon"
+
+[node name="GourmetTrait" type="Node" parent="Disabled/Gordon"]
+script = ExtResource( 20 )
+
+[node name="DislikesGeekCulture" type="Node" parent="Disabled/Gordon"]
+script = ExtResource( 4 )
+topic = "Geek culture"
+dislike = true
+
+[node name="Berlioz" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Berlioz"
+
+[node name="MessyEaterTrait" parent="Disabled/Berlioz" instance=ExtResource( 24 )]
+is_opposite = true
+
+[node name="LikesGymCulture" type="Node" parent="Disabled/Berlioz"]
+script = ExtResource( 4 )
+topic = "Gym Culture"
+
+[node name="Bruce" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Bruce"
+
+[node name="MafiaTrait" type="Node" parent="Disabled/Bruce"]
+script = ExtResource( 26 )
+is_opposite = true
+
+[node name="DislikesFolklore" type="Node" parent="Disabled/Bruce"]
+script = ExtResource( 4 )
+topic = "Gym Culture"
+dislike = true
+
+[node name="Juliette" parent="Disabled" instance=ExtResource( 2 )]
+full_name = "Juliette"
+hair_texture = ExtResource( 35 )
+eyes_texture = ExtResource( 17 )
+face_texture = ExtResource( 8 )
+body_texture = ExtResource( 36 )
+go_dance_at_party = false
+
+[node name="LikePets" type="Node" parent="Disabled/Juliette"]
+script = ExtResource( 4 )
+topic = "Pets"
+
+[node name="HateCar" type="Node" parent="Disabled/Juliette"]
+script = ExtResource( 4 )
+topic = "Car"
+dislike = true
+
+[node name="CostumeConflictTrait" type="Node" parent="Disabled/Juliette"]
+script = ExtResource( 32 )
+hidden_trait = true
+of_bride = true
+costume_part = "hair"

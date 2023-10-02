@@ -132,6 +132,8 @@ func add_interaction_event(interaction_event):
 func un_invite_all():
 	for attendee in $Attendees.get_children():
 		attendee.un_invite(LevelUi.guess_dropzone)
+		
+	$Disabled.queue_free()
 
 func any_attendee_in_phase()->bool:
 	for attendee in $Attendees.get_children():
