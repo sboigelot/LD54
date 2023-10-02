@@ -31,7 +31,14 @@ func has_free_space(requester)->bool:
 
 func add_item(item, anim:bool=false):
 	if not item in items:
-		items.append(item)
+		
+		if item.pre_drag_assigned_seat != self:
+			items.append(item)
+		else:
+			items.insert(min(item.dropzone_meta, items.size()), item)
+			
+		item.dropzone_meta = items.find(item)
+			
 		arrange_items(anim)
 
 func remove_item(item, anim:bool=false):
@@ -42,7 +49,7 @@ func remove_item(item, anim:bool=false):
 func arrange_items(anim:bool=false):
 	
 	var max_page = (items.size() / (rows * columns)) + 1
-	ui_page_label.text = "Page %d / %d" % [
+	ui_page_label.text = "%d / %d" % [
 		(current_page + 1),
 		max_page
 	]

@@ -16,6 +16,9 @@ var destination: Vector2
 
 var vertical_spacer = 70.0
 
+func get_attendee():
+	return get_parent().get_parent()
+
 func _ready():
 	connect("input_event", self, "_on_Invitation_input_event")
 	destination = global_position

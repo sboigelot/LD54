@@ -19,7 +19,10 @@ body_texture = ExtResource( 1 )
 [node name="AttendeeVisual" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="Invitation" parent="." instance=ExtResource( 4 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
-[connection signal="drag" from="Invitation" to="." method="_on_Invitation_drag"]
-[connection signal="select" from="Invitation" to="." method="_on_Invitation_select"]
+[node name="Invitation" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[connection signal="drag" from="CanvasLayer/Invitation" to="." method="_on_Invitation_drag"]
+[connection signal="select" from="CanvasLayer/Invitation" to="." method="_on_Invitation_select"]

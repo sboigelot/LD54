@@ -20,15 +20,15 @@ export(bool) var go_dance_at_party = true
 
 func _ready():
 	$AttendeeVisual.update_sprites(self)
-	$Invitation.update_attendee(self)
+	$CanvasLayer/Invitation.update_attendee(self)
 
 func show_only_invitation():
 	$AttendeeVisual.visible = false
-	$Invitation.visible = true
+	$CanvasLayer/Invitation.visible = true
 	
 func show_only_attendee_visual():
 	$AttendeeVisual.visible = true
-	$Invitation.visible = false
+	$CanvasLayer/Invitation.visible = false
 
 func is_invited()->bool:
 	return get_seat() != null and get_seat().single_content
@@ -198,8 +198,8 @@ func start_phase_party(delay):
 	#	Attendee go to dancefloor location
 		var dancefloor_position = Game.Data.current_level.dancefloor_pos2d.global_position
 		dancefloor_position += Vector2(
-			rand_range(-50.0, 50.0),
-			rand_range(-50.0, 50.0)
+			rand_range(-200.0, 200.0),
+			rand_range(-100.0, 100.0)
 		)
 		$AttendeeVisual.start_move_to(dancefloor_position)
 		yield($AttendeeVisual, "move_completed")
@@ -244,13 +244,12 @@ func start_phase_party(delay):
 	table.current_speaker = null
 	phase_completed = true
 	
-
 func register_trait(trait):
 	if not trait in traits:
 		traits.append(trait)
 	
 func toggle_ivitation(visible:bool):
-	$Invitation.visible = visible
+	$CanvasLayer/Invitation.visible = visible
 	
 func toggle_visual(visible:bool):
 	$Visual.visible = visible
@@ -262,11 +261,11 @@ func _on_Invitation_select():
 	LevelUi.show_attendee_details(self)
 	
 func un_invite(drop_zone):
-	$Invitation.un_invited_zone = drop_zone
-	$Invitation.un_invite()
+	$CanvasLayer/Invitation.un_invited_zone = drop_zone
+	$CanvasLayer/Invitation.un_invite()
 
 func get_seat():
-	return $Invitation.assigned_seat
+	return $CanvasLayer/Invitation.assigned_seat
 	
 func get_seat_label():
 	var seat = get_seat()

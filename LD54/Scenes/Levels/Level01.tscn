@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Components/Attendee/Attendee.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Images/Avatars/eye_glasses.svg" type="Texture" id=17]
 [ext_resource path="res://Data/Traits/AlcoholicTrait.gd" type="Script" id=18]
 [ext_resource path="res://Images/Avatars/body4.svg" type="Texture" id=19]
+[ext_resource path="res://Images/UIsvg/background.svg" type="Texture" id=20]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1471, 57, 1481, 933, 1402, 614, 1317, 873, 1101, 482, 37, 53, 903, 569, 915, 892, 803, 897, 769, 640, 616, 608, 377, 655, 97, 1065, 373, 923, 573, 993 )
@@ -36,22 +37,27 @@ np_bar_pos2d = NodePath("BarPosition2D")
 np_buffet_pos2d = NodePath("BuffetPosition2D")
 np_dancefloor_pos2d = NodePath("DancefloorPosition2D")
 
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 20 )
+centered = false
+
 [node name="AttendeeStartPosition2D" type="Position2D" parent="."]
-position = Vector2( 1156, -103 )
+position = Vector2( 1114, -77 )
 
 [node name="BarPosition2D" type="Position2D" parent="."]
-position = Vector2( 1444, 795 )
+position = Vector2( 1190, 776 )
 
 [node name="BuffetPosition2D" type="Position2D" parent="."]
-position = Vector2( 1440, 285 )
+position = Vector2( 1199, 466 )
 
 [node name="DancefloorPosition2D" type="Position2D" parent="."]
-position = Vector2( 319, 901 )
+position = Vector2( 481, 796 )
 
 [node name="HonorTable" type="Node2D" parent="."]
 
 [node name="Groom" parent="HonorTable" instance=ExtResource( 2 )]
-position = Vector2( 175, 135 )
+position = Vector2( 424, 107 )
+full_name = "Groom"
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 17 )
 face_texture = ExtResource( 11 )
@@ -60,102 +66,102 @@ body_texture = ExtResource( 12 )
 [node name="AttendeeVisual" parent="HonorTable/Groom" index="0"]
 visible = true
 
-[node name="Invitation" parent="HonorTable/Groom" index="1"]
+[node name="CanvasLayer" parent="HonorTable/Groom" index="1"]
 visible = false
 
 [node name="Bride" parent="HonorTable" instance=ExtResource( 2 )]
-position = Vector2( 337, 137 )
+position = Vector2( 534, 104 )
+full_name = "Bride"
 hair_texture = ExtResource( 14 )
 body_texture = ExtResource( 15 )
 
 [node name="AttendeeVisual" parent="HonorTable/Bride" index="0"]
 visible = true
 
-[node name="Invitation" parent="HonorTable/Bride" index="1"]
+[node name="CanvasLayer" parent="HonorTable/Bride" index="1"]
 visible = false
 
 [node name="MeetGroomPosition2D" type="Position2D" parent="HonorTable"]
-position = Vector2( 175, 270 )
+position = Vector2( 416, 322 )
 
 [node name="MeetBridePosition2D" type="Position2D" parent="HonorTable"]
-position = Vector2( 341, 275 )
+position = Vector2( 537, 317 )
 
 [node name="Table 1" type="Node2D" parent="."]
-position = Vector2( -340, -447 )
+position = Vector2( 927, 476 )
 script = ExtResource( 10 )
 
 [node name="Seat1" parent="Table 1" instance=ExtResource( 3 )]
-position = Vector2( 1551, 654 )
+position = Vector2( 106, -67 )
 seat_name = "Seat 1"
 near_buffet = true
 
 [node name="Seat2" parent="Table 1" instance=ExtResource( 3 )]
-position = Vector2( 1354, 858 )
+position = Vector2( -109, 68 )
 seat_name = "Seat 2"
 near_groom_table = true
 
 [node name="Seat3" parent="Table 1" instance=ExtResource( 3 )]
-position = Vector2( 1354, 654 )
+position = Vector2( -107, -70 )
 seat_name = "Seat 3"
 near_groom_table = true
 
 [node name="Seat4" parent="Table 1" instance=ExtResource( 3 )]
-position = Vector2( 1557, 852 )
+position = Vector2( 106, 67 )
 seat_name = "Seat 4"
 near_buffet = true
 
 [node name="Table 2" type="Node2D" parent="."]
-position = Vector2( -1182, -219 )
+position = Vector2( 481, 471 )
 script = ExtResource( 10 )
 
 [node name="Seat1" parent="Table 2" instance=ExtResource( 3 )]
-position = Vector2( 1551, 654 )
+position = Vector2( 103, -65 )
 seat_name = "Seat 1"
 near_groom_table = true
 
 [node name="Seat2" parent="Table 2" instance=ExtResource( 3 )]
-position = Vector2( 1354, 858 )
+position = Vector2( -116, 73 )
 seat_name = "Seat 2"
 near_dance_floor = true
 
 [node name="Seat3" parent="Table 2" instance=ExtResource( 3 )]
-position = Vector2( 1354, 654 )
+position = Vector2( -112, -63 )
 seat_name = "Seat 3"
 near_groom_table = true
 
 [node name="Seat4" parent="Table 2" instance=ExtResource( 3 )]
-position = Vector2( 1557, 852 )
+position = Vector2( 107, 71 )
 seat_name = "Seat 4"
 near_dance_floor = true
 
 [node name="Table 3" type="Node2D" parent="."]
-position = Vector2( -336, -56 )
+position = Vector2( 926, 779 )
 script = ExtResource( 10 )
 
 [node name="Seat1" parent="Table 3" instance=ExtResource( 3 )]
-position = Vector2( 1551, 654 )
+position = Vector2( 110, -66 )
 seat_name = "Seat 1"
 near_bar = true
 
 [node name="Seat2" parent="Table 3" instance=ExtResource( 3 )]
-position = Vector2( 1354, 858 )
+position = Vector2( -104, 71 )
 seat_name = "Seat 2"
 near_dance_floor = true
 
 [node name="Seat3" parent="Table 3" instance=ExtResource( 3 )]
-position = Vector2( 1354, 654 )
+position = Vector2( -104, -69 )
 seat_name = "Seat 3"
 near_dance_floor = true
 
 [node name="Seat4" parent="Table 3" instance=ExtResource( 3 )]
-position = Vector2( 1557, 852 )
+position = Vector2( 110, 70 )
 seat_name = "Seat 4"
 near_bar = true
 
 [node name="Attendees" type="Node2D" parent="."]
 
 [node name="Filip" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 1654, 187 )
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 8 )
@@ -173,7 +179,6 @@ script = ExtResource( 16 )
 of_bride = true
 
 [node name="Benoit" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 1650, 290 )
 full_name = "Benoit"
 hair_texture = ExtResource( 5 )
 eyes_texture = ExtResource( 6 )
@@ -191,7 +196,6 @@ script = ExtResource( 4 )
 topic = "Car"
 
 [node name="Andrea" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 1648, 397 )
 full_name = "Andrea"
 body_texture = ExtResource( 9 )
 go_dance_at_party = false
@@ -210,7 +214,6 @@ script = ExtResource( 16 )
 of_groom = true
 
 [node name="Pascal" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 1659, 512 )
 full_name = "Pascal"
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
@@ -221,7 +224,6 @@ script = ExtResource( 4 )
 topic = "Space"
 
 [node name="UncleBob" parent="Attendees" instance=ExtResource( 2 )]
-position = Vector2( 1665, 610 )
 full_name = "Uncle Bob"
 hair_texture = ExtResource( 5 )
 face_texture = ExtResource( 8 )

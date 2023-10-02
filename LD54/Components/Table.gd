@@ -17,7 +17,7 @@ func get_attendees()->Array:
 	
 	var attendees = []
 	for invitation in invitations:
-		attendees.append(invitation.get_parent())
+		attendees.append(invitation.get_attendee())
 	return attendees
 
 func any_seat_free()->bool:
