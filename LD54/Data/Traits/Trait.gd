@@ -24,8 +24,17 @@ func get_description()->String:
 	
 func interact_with(other_attendee, other_trait, phase):
 	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+
+func interact_with_buffet(seat, phase):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	
-func interact_with_seat(seqt, phase):
+func interact_with_bar(seat, phase):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+	
+func interact_with_dancefloor(seat, phase):
+	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
+	
+func interact_with_seat(seat, phase):
 	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	
 func interact_with_bride(phase):

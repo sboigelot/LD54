@@ -22,6 +22,9 @@ layer = -1
 script = ExtResource( 1 )
 np_guess_book = NodePath("LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone")
 np_score_bar = NodePath("LevelUIControl/ScoreProgressBar")
+np_phase_bar = NodePath("LevelUIControl/PhaseProgressBar")
+np_intro_tuto = NodePath("LevelUIControl/IntroTuto")
+np_intro_tuto_text = NodePath("LevelUIControl/IntroTuto/RichTextLabel")
 
 [node name="LevelUIControl" type="Control" parent="."]
 anchor_right = 1.0
@@ -229,7 +232,6 @@ text = "this is a tooltip content"
 fit_content_height = true
 
 [node name="GuestBook" type="PanelContainer" parent="LevelUIControl"]
-visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -367.0
@@ -326,6 +328,7 @@ rect_min_size = Vector2( 0, 8 )
 mouse_filter = 2
 
 [node name="EventLog" type="PanelContainer" parent="LevelUIControl"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -367.0
@@ -390,7 +393,7 @@ scroll_horizontal_enabled = false
 script = ExtResource( 14 )
 
 [node name="LiveEventContainer" type="VBoxContainer" parent="LevelUIControl/EventLog/MarginContainer/VBoxContainer/AutoScrollContainer"]
-margin_top = 849.0
+margin_top = 881.0
 margin_right = 302.0
 margin_bottom = 907.0
 size_flags_horizontal = 3
@@ -405,26 +408,11 @@ margin_bottom = 984.0
 rect_min_size = Vector2( 0, 8 )
 mouse_filter = 2
 
-[node name="EndPlanButton" type="Button" parent="LevelUIControl"]
-margin_left = 75.0
-margin_top = 274.0
-margin_right = 87.0
-margin_bottom = 294.0
-text = "END PLAN"
-
-[node name="SpeedButton" type="Button" parent="LevelUIControl"]
-margin_left = 175.0
-margin_top = 274.0
-margin_right = 244.0
-margin_bottom = 294.0
-toggle_mode = true
-text = "SpeedUp"
-
 [node name="ScoreProgressBar" type="ProgressBar" parent="LevelUIControl"]
-margin_left = 496.0
-margin_top = 974.0
-margin_right = 1096.0
-margin_bottom = 1024.0
+margin_left = 773.0
+margin_top = 975.0
+margin_right = 1373.0
+margin_bottom = 1025.0
 rect_min_size = Vector2( 600, 50 )
 custom_styles/fg = SubResource( 1 )
 min_value = -20.0
@@ -432,6 +420,82 @@ max_value = 20.0
 step = 1.0
 rounded = true
 percent_visible = false
+
+[node name="PhaseProgressBar" type="ProgressBar" parent="LevelUIControl"]
+margin_left = 93.0
+margin_top = 976.0
+margin_right = 693.0
+margin_bottom = 1026.0
+rect_min_size = Vector2( 600, 50 )
+custom_styles/fg = SubResource( 1 )
+max_value = 3.0
+step = 1.0
+rounded = true
+percent_visible = false
+
+[node name="EndPlanButton" type="Button" parent="LevelUIControl"]
+margin_left = 39.0
+margin_top = 996.0
+margin_right = 116.0
+margin_bottom = 1016.0
+text = "END PLAN"
+
+[node name="EndSeatingButton" type="Button" parent="LevelUIControl"]
+margin_left = 243.0
+margin_top = 993.0
+margin_right = 320.0
+margin_bottom = 1013.0
+text = "END Seat"
+
+[node name="EndEatDrinkButton" type="Button" parent="LevelUIControl"]
+margin_left = 437.0
+margin_top = 996.0
+margin_right = 514.0
+margin_bottom = 1016.0
+text = "END ED"
+
+[node name="EndPartyButton" type="Button" parent="LevelUIControl"]
+margin_left = 649.0
+margin_top = 995.0
+margin_right = 726.0
+margin_bottom = 1015.0
+text = "END Party"
+
+[node name="SpeedButton" type="Button" parent="LevelUIControl"]
+margin_left = 342.0
+margin_top = 948.0
+margin_right = 411.0
+margin_bottom = 968.0
+toggle_mode = true
+text = "SpeedUp"
+
+[node name="IntroTuto" type="AcceptDialog" parent="LevelUIControl"]
+margin_right = 83.0
+margin_bottom = 58.0
+window_title = "Help us plan our wedding"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LevelUIControl/IntroTuto"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 458.0
+margin_bottom = 237.0
+rect_min_size = Vector2( 450, 0 )
+bbcode_enabled = true
+bbcode_text = "[center][img]res://Images/Avatars/groom.png[/img][img]res://Images/Avatars/groom.png[/img]
+
+We need you to fill all the seats in our wedding!.
+
+We have too much guests so you will have to choose who to invite. But be careful, not everyone goes along with each others.
+
+Once all seats are assigned, let's start the wedding.[/center]"
+text = "
+
+We need you to fill all the seats in our wedding!.
+
+We have too much guests so you will have to choose who to invite. But be careful, not everyone goes along with each others.
+
+Once all seats are assigned, let's start the wedding."
+fit_content_height = true
 
 [connection signal="gui_input" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
 [connection signal="pressed" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/Top/HBoxContainer/LayoutDecoupler/TextureButton" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TextureButton_pressed"]
@@ -444,4 +508,9 @@ percent_visible = false
 [connection signal="pressed" from="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/Menu/PrevPageButton" to="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone" method="_on_PrevPageButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/Menu/NextPageButton" to="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone" method="_on_NextPageButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/EndPlanButton" to="." method="_on_EndPlanButton_pressed"]
+[connection signal="pressed" from="LevelUIControl/EndSeatingButton" to="." method="_on_EndSeatingButton_pressed"]
+[connection signal="pressed" from="LevelUIControl/EndEatDrinkButton" to="." method="_on_EndEatDrinkButton_pressed"]
+[connection signal="pressed" from="LevelUIControl/EndPartyButton" to="." method="_on_EndPartyButton_pressed"]
 [connection signal="toggled" from="LevelUIControl/SpeedButton" to="." method="_on_SpeedButton_toggled"]
+[connection signal="confirmed" from="LevelUIControl/IntroTuto" to="." method="_on_IntroTuto_confirmed"]
+[connection signal="custom_action" from="LevelUIControl/IntroTuto" to="." method="_on_IntroTuto_custom_action"]

@@ -23,6 +23,9 @@ func get_description()->String:
 func interact_with(other_attendee, other_trait, phase):
 	yield(Game.get_tree(), "idle_frame") # prevent issue with yield(this_func(), "completed")
 	
+	if phase != Level.PHASE.SEAT:
+		return
+	
 	if other_trait.get_identifier() != get_identifier():
 		return
 		

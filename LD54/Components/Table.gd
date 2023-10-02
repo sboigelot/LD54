@@ -20,6 +20,14 @@ func get_attendees()->Array:
 		attendees.append(invitation.get_parent())
 	return attendees
 
+func any_seat_free()->bool:
+	for child in get_children():
+		if child.is_in_group("dropzone"):
+			if child.single_content:
+				if child.content == null:
+					return true
+	return false
+	
 func everyone_seated()->bool:
 	
 	for attendee in get_attendees():

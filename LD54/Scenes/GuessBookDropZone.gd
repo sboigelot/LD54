@@ -11,7 +11,7 @@ export var columns: int = 2
 export var rows: int = 5
 export var current_page = 0
 
-export var seat_name = "Uninvited"
+export var seat_name = ""
 
 func clear():
 	items.clear()
