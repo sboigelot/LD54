@@ -1,23 +1,16 @@
-create end screen UI with Star rating, replay button, and exit to menu
-
-create the second level
-
-add quit button
+add HTML click here overlay
+WebGL version font not visible
 
 if time left:
 
-	make people move a bit to dance?
-
-	use Navigation2DService and agent to calculate movement path of attendee
-	
 	integrate some fitting music
+
+	make people move a bit to dance?
+	
 	change the fonts
 	add sound fx
-	
-	add achievements?
-	
-	Maybe we can have a spash title at the start of each phase?
 
-	Make the z index of every element in movement on the map relative to the y position
+Retired ideas:
+	add achievements?
 
 

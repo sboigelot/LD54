@@ -6,6 +6,7 @@ export(NodePath) var np_neg_score_bar
 export(NodePath) var np_pos_score_bar
 export(NodePath) var np_intro_tuto
 export(NodePath) var np_intro_tuto_text
+export(NodePath) var np_intro_skip_button
 
 onready var guess_book = get_node(np_guess_book)
 onready var guess_dropzone = get_node(np_guess_dropzone)
@@ -13,6 +14,7 @@ onready var neg_score_bar = get_node(np_neg_score_bar) as ProgressBar
 onready var pos_score_bar = get_node(np_pos_score_bar) as ProgressBar
 onready var intro_tuto = get_node(np_intro_tuto) as PopupDialog
 onready var intro_tuto_text = get_node(np_intro_tuto_text) as RichTextLabel
+onready var intro_skip_button = get_node(np_intro_skip_button) as Button
 
 export(NodePath) var np_phase_bar
 export(NodePath) var np_speed_button
@@ -40,7 +42,10 @@ func clear():
 	$LevelUIControl/EventLog.hide()
 	score = 0
 	update_phase_bar()
-	
+
+func hide_attendee_details():
+	$LevelUIControl/AttendeeDetailWindowDialog.hide()
+
 func show_attendee_details(attendee:Attendee):
 	$LevelUIControl/AttendeeDetailWindowDialog.show_detail(attendee, true)
 	update_phase_bar()
@@ -149,7 +154,7 @@ func add_interaction_event(interaction_event):
 	$LevelUIControl/EventLog.add_child_for(interaction_event)
 	score += interaction_event.impact
 	pos_score_bar.value = max(score, 0)
-	neg_score_bar.value = 20 + min(score, 0)
+	neg_score_bar.value = 10 + min(score, 0)
 
 func _on_IntroTuto_confirmed():
 	Game.Data.current_level._on_IntroTuto_confirmed()
@@ -164,3 +169,7 @@ func _on_IgnoreTutoButton_pressed():
 func _on_OkTutoButton_pressed():
 	intro_tuto.hide()
 	Game.Data.current_level._on_IntroTuto_confirmed()
+
+
+func _on_QuitButton_pressed():
+	$LevelUIControl/QuitConfirmationDialog.popup_centered()

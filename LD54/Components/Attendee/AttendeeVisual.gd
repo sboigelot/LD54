@@ -53,3 +53,9 @@ func play_emote(emote_name):
 	speech_bubble_animation_player.play(emote_name)
 	yield(speech_bubble_animation_player, "animation_finished")
 	
+
+func _on_Area2D_mouse_entered():
+	LevelUi.show_attendee_details(get_parent())
+
+func _on_Area2D_mouse_exited():
+	LevelUi.hide_attendee_details()

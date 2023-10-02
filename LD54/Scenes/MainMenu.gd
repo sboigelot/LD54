@@ -14,6 +14,7 @@ onready var ui_audio_soundfx = get_node(np_ui_audio_soundfx) as HSlider
 func _on_StartGameButton_pressed():
 	SfxManager.play("buttonpress")
 	Game.current_level_path = "res://Scenes/Levels/Level01.tscn"
+	Game.join_the_dark_side = false 
 	Game.transition_to_scene(Game.current_level_path)
 	yield(ScreenTransition, "transitioned_halfway")
 	Game.new_game()
@@ -22,12 +23,15 @@ func _on_StartGameButton_pressed():
 func _on_PlayLevel1Button_pressed():
 	SfxManager.play("buttonpress")
 	Game.current_level_path = "res://Scenes/Levels/Level01.tscn"
+	Game.join_the_dark_side = false 
 	Game.transition_to_scene(Game.current_level_path)
 	yield(ScreenTransition, "transitioned_halfway")
 	Game.new_game()
 
 func _on_PlayLevel2Button_pressed():
 	SfxManager.play("buttonpress")
+	Game.current_level_path = "res://Scenes/Levels/Level01.tscn"
+	Game.join_the_dark_side = true 
 	Game.transition_to_scene("res://Scenes/Levels/Level01.tscn")
 	yield(ScreenTransition, "transitioned_halfway")
 	Game.new_game()

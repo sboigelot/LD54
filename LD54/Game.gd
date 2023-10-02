@@ -4,6 +4,7 @@ export(PackedScene) var game_data_scene
 var Data: GameData
 
 var current_level_path
+var join_the_dark_side
 
 export(PoolColorArray) var transition_colors
 

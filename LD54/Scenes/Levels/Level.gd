@@ -37,11 +37,18 @@ var tuto_index = 0
 
 func _ready():
 	Game.Data.current_level = self
+	LevelUi.score = 0
 	LevelUi.show()
 	un_invite_all()
 	play_current_phase() #hide the Attendee visuals and show invitations
 #	$HonorTable/Groom.show_only_attendee_visual()
 #	$HonorTable/Bride.show_only_attendee_visual()
+
+	LevelUi.intro_skip_button.visible = not Game.join_the_dark_side
+	if Game.join_the_dark_side:
+		skip_tutorial = true
+		LevelUi.intro_tuto_text.bbcode_text = "[center][img]res://Images/Avatars/ex.svg[/img]\n\nORGANISER! I NEED YOUR HELP!\n\nMy soulmate and I broke up two years ago but it was a mistake!\n\nNow he will marry a ****!\n\nMake sur to make their wedding a BIG FAILURE![/center]"
+
 	LevelUi.intro_tuto.popup_centered()
 
 func _on_IntroTuto_custom_action(action):
@@ -56,20 +63,20 @@ func _on_IntroTuto_confirmed():
 	tuto_index += 1
 	
 	if tuto_index == 1:
-		LevelUi.intro_tuto_text.bbcode_text = "\n\nDrag and drop guest from the Guest Book to seats.\n\nClick on a guest invitation to show a polaroid of the guest with more info.\n\nYou can learn more about guest traits by pointing your mouse cursor over them\n\nYour goal is to match people with the same interest at the same table, avoid fights and follow the desire of each guest."
+		LevelUi.intro_tuto_text.bbcode_text = "\n\nDrag and drop guest from the Guest Book to seat.\n\nClick on a guest to show more info.\n\nYou can learn more about guest traits by pointing your mouse cursor over them.\n\nYour goal is to match people with the same interest at the same table, avoid fights and follow the desire of each guest."
 		LevelUi.intro_tuto.popup_centered_minsize(Vector2.ZERO)
 		
 	if tuto_index == 2:
-		LevelUi.intro_tuto_text.bbcode_text = "\n\nGreat, all seats are full! You can start the wedding with the play button on the bottom left of the screen when you are ready"
+		LevelUi.intro_tuto_text.bbcode_text = "\n\nGreat, all seats are full!\n\nYou can start the wedding with the play button on the bottom left of the screen when you are ready."
 		
 	if tuto_index == 3:
-		LevelUi.intro_tuto_text.bbcode_text = "\n\nEveryone is seated, you can start the next phase of the wedding by sending everyone to buffet with the play button when you are ready"
+		LevelUi.intro_tuto_text.bbcode_text = "\n\nEveryone is seated, you can start the next phase of the wedding by sending everyone to buffet with the play button when you are ready."
 		
 	if tuto_index == 4:
 		LevelUi.intro_tuto_text.bbcode_text = "\n\nThat went well! Time to start party! (same button again)"
 		
 	if tuto_index == 5:
-		LevelUi.intro_tuto_text.bbcode_text = "\n\nThis is the end, finish the wedding and check your score! (same button again)"
+		LevelUi.intro_tuto_text.bbcode_text = "\n\nThis is the end,\n\nfinish the wedding and check your score! (same button again)"
 		
 func register_table(table):
 	if not table in tables:

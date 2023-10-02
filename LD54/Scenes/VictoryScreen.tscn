@@ -92,8 +92,9 @@ corner_radius_bottom_left = 50
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 7 )
-np_neg_score_bar = NodePath("MarginContainer/CenterContainer/VBoxContainer/ScoreDisplay/NegScoreProgressBar")
-np_pos_score_bar = NodePath("MarginContainer/CenterContainer/VBoxContainer/ScoreDisplay/PosScoreProgressBar")
+np_score_label = NodePath("MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreLabel")
+np_neg_score_bar = NodePath("MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreDisplay/NegScoreProgressBar")
+np_pos_score_bar = NodePath("MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreDisplay/PosScoreProgressBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -119,9 +120,9 @@ margin_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
 margin_left = 566.0
-margin_top = 188.0
+margin_top = 164.0
 margin_right = 1354.0
-margin_bottom = 892.0
+margin_bottom = 915.0
 rect_min_size = Vector2( 730, 0 )
 size_flags_horizontal = 0
 custom_constants/separation = 80
@@ -147,64 +148,76 @@ rect_min_size = Vector2( 240, 240 )
 texture = ExtResource( 2 )
 expand = true
 
-[node name="ScoreDisplay" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
 margin_top = 320.0
 margin_right = 788.0
-margin_bottom = 400.0
+margin_bottom = 447.0
+
+[node name="ScoreDisplay" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2"]
+margin_right = 788.0
+margin_bottom = 80.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 custom_constants/separation = -4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/VBoxContainer/ScoreDisplay"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreDisplay"]
 margin_bottom = 80.0
 
-[node name="Sprite" type="Sprite" parent="MarginContainer/CenterContainer/VBoxContainer/ScoreDisplay/MarginContainer"]
+[node name="Sprite" type="Sprite" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreDisplay/MarginContainer"]
 position = Vector2( -20, 40 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 1
 texture = ExtResource( 4 )
 
-[node name="NegScoreProgressBar" type="ProgressBar" parent="MarginContainer/CenterContainer/VBoxContainer/ScoreDisplay"]
+[node name="NegScoreProgressBar" type="ProgressBar" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreDisplay"]
 margin_left = -4.0
 margin_right = 396.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 400, 80 )
 custom_styles/fg = SubResource( 30 )
 custom_styles/bg = SubResource( 31 )
-max_value = 20.0
+max_value = 10.0
 step = 1.0
-value = 20.0
+value = 10.0
 rounded = true
 percent_visible = false
 
-[node name="PosScoreProgressBar" type="ProgressBar" parent="MarginContainer/CenterContainer/VBoxContainer/ScoreDisplay"]
+[node name="PosScoreProgressBar" type="ProgressBar" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreDisplay"]
 margin_left = 392.0
 margin_right = 792.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 400, 80 )
 custom_styles/fg = SubResource( 32 )
 custom_styles/bg = SubResource( 33 )
-max_value = 20.0
+max_value = 10.0
 step = 1.0
 rounded = true
 percent_visible = false
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/CenterContainer/VBoxContainer/ScoreDisplay"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreDisplay"]
 margin_left = 788.0
 margin_right = 788.0
 margin_bottom = 80.0
 
-[node name="Sprite" type="Sprite" parent="MarginContainer/CenterContainer/VBoxContainer/ScoreDisplay/MarginContainer2"]
+[node name="Sprite" type="Sprite" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2/ScoreDisplay/MarginContainer2"]
 position = Vector2( 20, 40 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 1
 texture = ExtResource( 6 )
 
+[node name="ScoreLabel" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer2"]
+margin_top = 84.0
+margin_right = 788.0
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 3 )
+text = "Final Score: +20"
+align = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
 margin_left = 194.0
-margin_top = 480.0
+margin_top = 527.0
 margin_right = 594.0
-margin_bottom = 704.0
+margin_bottom = 751.0
 size_flags_horizontal = 4
 
 [node name="Replay" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer"]
