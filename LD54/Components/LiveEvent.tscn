@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Fonts/Game/xxsmall.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Stuffs/Game/xxsmall.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Images/UIsvg/broken_heart.svg" type="Texture" id=2]
 [ext_resource path="res://Components/LiveEvent.gd" type="Script" id=3]
 [ext_resource path="res://Images/UIsvg/heart.svg" type="Texture" id=4]

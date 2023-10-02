@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Components/Attendee/Invitation.gd" type="Script" id=1]
 [ext_resource path="res://Images/UIsvg/invitation.svg" type="Texture" id=2]
-[ext_resource path="res://Fonts/Game/xxsmall.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Fonts/Game/xsmall.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Stuffs/Game/xxsmall.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Stuffs/Game/xsmall.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 2 )

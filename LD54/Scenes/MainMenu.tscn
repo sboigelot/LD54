@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Game/small.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Fonts/Game/normal.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Fonts/Game/xsmall.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Stuffs/Game/small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Stuffs/Game/normal.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Stuffs/Game/xsmall.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Images/UIsvg/MAINSCREEN.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxFlat" id=27]
@@ -73,6 +73,7 @@ corner_radius_bottom_left = 15
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -594, 268 )
 script = ExtResource( 1 )
 np_ui_audio_master = NodePath("MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/MusicControl/MasterVolumeSlider")
 np_ui_audio_music = NodePath("MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/MusicControl/MusicVolumeSlider")

@@ -1,13 +1,13 @@
 [gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scenes/LevelUI.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Game/normal_bold.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Stuffs/Game/normal_bold.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Components/Attendee/AttendeeVisual.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/AttendeeDetailWindowDialog.gd" type="Script" id=4]
-[ext_resource path="res://Fonts/Game/normal.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Stuffs/Game/normal.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Images/UI/landscape1.png" type="Texture" id=6]
 [ext_resource path="res://Theme/Polaroid_panel.tres" type="StyleBox" id=7]
-[ext_resource path="res://Fonts/Game/small.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Stuffs/Game/small.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Images/UI/close.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/TooltipPopup.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/GuessBookDropZone.gd" type="Script" id=11]
@@ -27,7 +27,7 @@
 [ext_resource path="res://Images/UIsvg/fastforward_on.svg" type="Texture" id=25]
 [ext_resource path="res://Images/UIsvg/fastforward.svg" type="Texture" id=26]
 [ext_resource path="res://Images/UIsvg/end_wedding.svg" type="Texture" id=27]
-[ext_resource path="res://fonts/Comfortaa/static/Comfortaa-Bold.ttf" type="DynamicFontData" id=28]
+[ext_resource path="res://Stuffs/Comfortaa/static/Comfortaa-Bold.ttf" type="DynamicFontData" id=28]
 [ext_resource path="res://Images/UIsvg/background.svg" type="Texture" id=29]
 [ext_resource path="res://Images/UI/tutorial.svg" type="Texture" id=30]
 [ext_resource path="res://Images/UIsvg/close.svg" type="Texture" id=31]
@@ -167,6 +167,7 @@ np_end_drink_button = NodePath("LevelUIControl/GridContainer/PhaseProgressAndCon
 np_end_party_button = NodePath("LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer4/EndPartyButton")
 
 [node name="Background" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 29 )
 centered = false
 

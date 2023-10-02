@@ -19,7 +19,6 @@ func _on_StartGameButton_pressed():
 	yield(ScreenTransition, "transitioned_halfway")
 	Game.new_game()
 
-
 func _on_PlayLevel1Button_pressed():
 	SfxManager.play("buttonpress")
 	Game.current_level_path = "res://Scenes/Levels/Level01.tscn"
