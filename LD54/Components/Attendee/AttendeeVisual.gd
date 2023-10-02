@@ -34,6 +34,7 @@ func start_move_to(target):
 	
 func _physics_process(delta):
 	move_towards_destination(delta)
+	z_index = global_position.y
 
 func move_towards_destination(delta):
 	if not moving:
@@ -53,6 +54,15 @@ func play_emote(emote_name):
 	speech_bubble_animation_player.play(emote_name)
 	yield(speech_bubble_animation_player, "animation_finished")
 	
+func play_loop_emote(emote_name):
+	if speech_bubble_animation_player.is_playing():
+		yield(speech_bubble_animation_player, "animation_finished")
+		
+	speech_bubble_animation_player.play(emote_name)
+
+func stop_loop_emote():
+	if speech_bubble_animation_player.is_playing():
+		speech_bubble_animation_player.stop()
 
 func _on_Area2D_mouse_entered():
 	LevelUi.show_attendee_details(get_parent())

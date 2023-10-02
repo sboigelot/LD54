@@ -37,7 +37,7 @@ func interact_with_bride(phase):
 	interaction_event.emote1 = "Angry"
 	interaction_event.emote2 = "Angry"
 	interaction_event.impact = -3
-	interaction_event.description = "%s wears the same %s as the groom!" % [get_parent().full_name, costume_part]
+	interaction_event.description = "%s wears the same %s as the bride!" % [get_parent().full_name, costume_part]
 	
 	Game.Data.current_level.add_interaction_event(interaction_event)
 	yield(Game.Data.current_level.bride.play_emote(interaction_event.emote2), "completed")
@@ -57,7 +57,7 @@ func interact_with_groom(phase):
 	interaction_event.emote1 = "Angry"
 	interaction_event.emote2 = "Angry"
 	interaction_event.impact = -3
-	interaction_event.description = "%s wears the same %s as the bride!"  % [get_parent().full_name, costume_part]
+	interaction_event.description = "%s wears the same %s as the groom!"  % [get_parent().full_name, costume_part]
 	
 	Game.Data.current_level.add_interaction_event(interaction_event)
 	yield(Game.Data.current_level.groom.play_emote(interaction_event.emote2), "completed")

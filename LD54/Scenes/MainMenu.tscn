@@ -314,8 +314,8 @@ margin_right = 744.0
 margin_bottom = 33.0
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
-bbcode_text = "[center]Made for Ludum Dare 54 \"Limited Space\" by [color=#00ffff]Bu[/color] & [color=#00ffff]Togis[/color]"
-text = "Made for Ludum Dare 54 \"Limited Space\" by Bu & Togis"
+bbcode_text = "[center]Made for Ludum Dare 54 \"Limited Space\" by [color=#00ffff]Bu[/color], [color=#00ffff]Anchorlight[/color] & [color=#00ffff]Togis[/color]"
+text = "Made for Ludum Dare 54 \"Limited Space\" by Bu, Anchorlight & Togis"
 fit_content_height = true
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayLevel1Button" to="." method="_on_PlayLevel1Button_pressed"]

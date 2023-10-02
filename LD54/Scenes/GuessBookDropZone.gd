@@ -94,10 +94,12 @@ func arrange_items(anim:bool=false):
 
 
 func _on_PrevPageButton_pressed():
+	SfxManager.play("buttonpress")
 	current_page = max(current_page - 1, 0)
 	arrange_items()
 	
 func _on_NextPageButton_pressed():
+	SfxManager.play("buttonpress")
 	var max_page = (items.size() / (rows * columns)) + 1
 	current_page = min(current_page + 1, max_page - 1)
 	arrange_items()

@@ -214,13 +214,15 @@ func start_phase_party(delay):
 		yield($AttendeeVisual, "move_completed")
 		
 		dancing = true
+		$AttendeeVisual.play_loop_emote("Dance")
 		activity = "wait for every dancer on the dance floor"
 		while not Game.Data.current_level.everyone_dancing():
 			yield(get_tree().create_timer(0.5), "timeout")
 		
-		activity = "Attendee interact with dancefloor location"
+		activity = "Attendee interact with dance floor location"
 #	 yield dance animation
 		yield(get_tree().create_timer(0.5), "timeout")
+		$AttendeeVisual.stop_loop_emote()		
 		dancing = false
 		yield(interact_with_dancefloor(get_seat()), "completed")
 	

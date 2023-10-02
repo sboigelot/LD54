@@ -15,7 +15,7 @@ func get_color()->String:
 	
 func get_description()->String:
 	return "%s" % [
-		"Wants to sit %s the dancefloor" % ["far from" if oposite else "near"]
+		"Wants to sit %s the dance floor" % ["far from" if oposite else "near"]
 	]
 
 func interact_with_seat(seat, phase):
@@ -33,7 +33,7 @@ func interact_with_seat(seat, phase):
 		
 		interaction_event.emote1 = "Happy" if happy else "Angry"
 		interaction_event.impact = 1 if happy else -2
-		interaction_event.description = "%s is %s to sit %s the dancefloor" % [
+		interaction_event.description = "%s is %s to sit %s the dance floor" % [
 			get_parent().full_name,
 			"happy" if happy else "sad",
 			"near" if near_dance_floor else "far from",

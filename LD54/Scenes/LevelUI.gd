@@ -31,12 +31,15 @@ onready var end_drink_button = get_node(np_end_drink_button) as TextureButton
 onready var end_party_button = get_node(np_end_party_button) as TextureButton
 
 var score = 0
+var initial_tutorial_bbcode = ""
 
 func _ready():
 	visible = false
+	initial_tutorial_bbcode = intro_tuto_text.bbcode_text
 	clear()
 	
 func clear():
+	intro_tuto_text.bbcode_text = initial_tutorial_bbcode
 	guess_dropzone.clear()
 	guess_book.show()
 	$LevelUIControl/EventLog.hide()
@@ -68,6 +71,8 @@ func _on_AttendeeDetailWindowDialog_hide_tooltip(content):
 	$LevelUIControl/TooltipPopup.hide()
 
 func _on_EndPlanButton_pressed():
+	SfxManager.play("buttonpress")
+	Music.play(load("res://Sounds/Musics/YouMayDropTheBass2.ogg"))
 	if Game.Data.current_level.current_phase == Level.PHASE.PLAN:
 		Game.Data.current_level.next_phase()
 		guess_book.hide()
@@ -78,18 +83,21 @@ func _on_EndPlanButton_pressed():
 		speed_button.pressed = false
 		
 func _on_EndSeatingButton_pressed():
+	SfxManager.play("buttonpress")
 	if Game.Data.current_level.current_phase == Level.PHASE.SEAT:
 		Game.Data.current_level.next_phase()
 		update_phase_bar()
 		speed_button.pressed = false
 
 func _on_EndEatDrinkButton_pressed():
+	SfxManager.play("buttonpress")
 	if Game.Data.current_level.current_phase == Level.PHASE.EATDRKINK:
 		Game.Data.current_level.next_phase()
 		update_phase_bar()
 		speed_button.pressed = false
 
 func _on_EndPartyButton_pressed():
+	SfxManager.play("buttonpress")
 	if Game.Data.current_level.current_phase == Level.PHASE.PARTY:
 		end_game()
 		speed_button.pressed = false
@@ -148,13 +156,18 @@ func move_speed_button():
 	
 	
 func _on_SpeedButton_toggled(button_pressed):
+	SfxManager.play("buttonpress")
 	Engine.time_scale = 5.0 if button_pressed else 1.0
 
 func add_interaction_event(interaction_event):
 	$LevelUIControl/EventLog.add_child_for(interaction_event)
 	score += interaction_event.impact
+	
+	update_score_bar()
+
+func update_score_bar():
 	pos_score_bar.value = max(score, 0)
-	neg_score_bar.value = 10 + min(score, 0)
+	neg_score_bar.value = 30 + min(score, 0)
 
 func _on_IntroTuto_confirmed():
 	Game.Data.current_level._on_IntroTuto_confirmed()
@@ -163,10 +176,12 @@ func _on_IntroTuto_custom_action(action):
 	Game.Data.current_level._on_IntroTuto_custom_action(action)
 
 func _on_IgnoreTutoButton_pressed():
+	SfxManager.play("buttonpress")
 	intro_tuto.hide()
 	Game.Data.current_level._on_IntroTuto_custom_action("skip_tutorial")
 
 func _on_OkTutoButton_pressed():
+	SfxManager.play("buttonpress")
 	intro_tuto.hide()
 	Game.Data.current_level._on_IntroTuto_confirmed()
 

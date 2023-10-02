@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Components/Attendee/AttendeeVisual.gd" type="Script" id=1]
 [ext_resource path="res://Images/Avatars/body1.svg" type="Texture" id=2]
 [ext_resource path="res://Images/Avatars/face_thin_light.svg" type="Texture" id=3]
 [ext_resource path="res://Images/Avatars/eye_green.svg" type="Texture" id=4]
 [ext_resource path="res://Images/Avatars/hair1_brown.svg" type="Texture" id=5]
-[ext_resource path="res://Images/UI/speech.png" type="Texture" id=6]
-[ext_resource path="res://Images/UI/angry.png" type="Texture" id=7]
+[ext_resource path="res://Images/UIsvg/speechbubble.svg" type="Texture" id=6]
+[ext_resource path="res://Images/UIsvg/nmnface.svg" type="Texture" id=7]
 [ext_resource path="res://Images/UI/happy.png" type="Texture" id=8]
+[ext_resource path="res://Images/UIsvg/uwuface.svg" type="Texture" id=9]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Angry"
@@ -48,6 +49,23 @@ tracks/2/keys = {
 "values": [ Vector2( 66, -80 ), Vector2( 66, -90 ), Vector2( 66, -85 ), Vector2( 66, -90 ), Vector2( 66, -80 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "Dance"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.9, 1.3, 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -5 ), Vector2( 0, 0 ), Vector2( 3, 5 ), Vector2( -3, -1 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="Animation" id=1]
 resource_name = "Happy"
 tracks/0/type = "value"
@@ -72,7 +90,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 8 ) ]
+"values": [ ExtResource( 9 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("SpeechBubble:position")
@@ -125,6 +143,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 66, -80 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 38.0
@@ -132,22 +162,24 @@ height = 40.0
 
 [node name="AttendeeVisual" type="Node2D"]
 script = ExtResource( 1 )
-np_hair_sprite = NodePath("HairSprite")
-np_eyes_sprite = NodePath("EyesSprite")
-np_face_sprite = NodePath("FaceSprite")
-np_body_sprite = NodePath("BodySprite")
+np_hair_sprite = NodePath("Body/HairSprite")
+np_eyes_sprite = NodePath("Body/EyesSprite")
+np_face_sprite = NodePath("Body/FaceSprite")
+np_body_sprite = NodePath("Body/BodySprite")
 np_speech_bubble_animation_player = NodePath("SpeechBubbleAnimationPlayer")
 
-[node name="BodySprite" type="Sprite" parent="."]
+[node name="Body" type="Node2D" parent="."]
+
+[node name="BodySprite" type="Sprite" parent="Body"]
 texture = ExtResource( 2 )
 
-[node name="FaceSprite" type="Sprite" parent="."]
+[node name="FaceSprite" type="Sprite" parent="Body"]
 texture = ExtResource( 3 )
 
-[node name="EyesSprite" type="Sprite" parent="."]
+[node name="EyesSprite" type="Sprite" parent="Body"]
 texture = ExtResource( 4 )
 
-[node name="HairSprite" type="Sprite" parent="."]
+[node name="HairSprite" type="Sprite" parent="Body"]
 texture = ExtResource( 5 )
 
 [node name="SpeechBubble" type="Sprite" parent="."]
@@ -157,12 +189,11 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
 [node name="ContentSprite" type="Sprite" parent="SpeechBubble"]
-position = Vector2( 9.99997, -75 )
-scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 8 )
 
 [node name="SpeechBubbleAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Angry = SubResource( 3 )
+anims/Dance = SubResource( 5 )
 anims/Happy = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 

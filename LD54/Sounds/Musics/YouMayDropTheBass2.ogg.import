@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/YouMayDropTheBass2.ogg-488145f75e353cde64437a6cc71a8036.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Musics/YouMayDropTheBass2.ogg"
+dest_files=[ "res://.import/YouMayDropTheBass2.ogg-488145f75e353cde64437a6cc71a8036.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

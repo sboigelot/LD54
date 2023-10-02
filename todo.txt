@@ -1,13 +1,9 @@
-add HTML click here overlay
-WebGL version font not visible
+replace victory sprites
+replay level --> should restart the tutorial
+
 
 if time left:
 
-	integrate some fitting music
-
-	make people move a bit to dance?
-	
-	change the fonts
 	add sound fx
 
 Retired ideas:

@@ -38,6 +38,7 @@ var tuto_index = 0
 func _ready():
 	Game.Data.current_level = self
 	LevelUi.score = 0
+	LevelUi.update_score_bar()
 	LevelUi.show()
 	un_invite_all()
 	play_current_phase() #hide the Attendee visuals and show invitations

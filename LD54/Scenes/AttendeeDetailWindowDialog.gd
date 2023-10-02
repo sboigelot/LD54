@@ -37,6 +37,7 @@ func show_detail(attendee:Attendee, show:bool):
 		show()
 
 func _on_TextureButton_pressed():
+	SfxManager.play("buttonpress")
 	hide()
 
 func _process(delta):
