@@ -61,74 +61,80 @@ position = Vector2( 416, 309 )
 [node name="MeetBridePosition2D" type="Position2D" parent="HonorTable"]
 position = Vector2( 537, 308 )
 
-[node name="Table 1" type="Node2D" parent="."]
+[node name="Bar Table" type="Node2D" parent="."]
 position = Vector2( 903, 475 )
 script = ExtResource( 2 )
 
-[node name="Seat1" parent="Table 1" instance=ExtResource( 14 )]
+[node name="Seat1" parent="Bar Table" instance=ExtResource( 14 )]
 position = Vector2( 106, -67 )
 seat_name = "Seat 1"
 near_bar = true
 
-[node name="Seat2" parent="Table 1" instance=ExtResource( 14 )]
+[node name="Seat2" parent="Bar Table" instance=ExtResource( 14 )]
 position = Vector2( -109, 68 )
 seat_name = "Seat 2"
+near_bar = true
 near_dance_floor = true
 
-[node name="Seat3" parent="Table 1" instance=ExtResource( 14 )]
+[node name="Seat3" parent="Bar Table" instance=ExtResource( 14 )]
 position = Vector2( -107, -70 )
 seat_name = "Seat 3"
 near_groom_table = true
+near_bar = true
 
-[node name="Seat4" parent="Table 1" instance=ExtResource( 14 )]
+[node name="Seat4" parent="Bar Table" instance=ExtResource( 14 )]
 position = Vector2( 106, 67 )
 seat_name = "Seat 4"
 near_bar = true
 
-[node name="Table 2" type="Node2D" parent="."]
+[node name="Family Table" type="Node2D" parent="."]
 position = Vector2( 453, 474 )
 script = ExtResource( 2 )
 
-[node name="Seat1" parent="Table 2" instance=ExtResource( 14 )]
+[node name="Seat1" parent="Family Table" instance=ExtResource( 14 )]
 position = Vector2( 103, -65 )
 seat_name = "Seat 1"
 near_groom_table = true
 
-[node name="Seat2" parent="Table 2" instance=ExtResource( 14 )]
+[node name="Seat2" parent="Family Table" instance=ExtResource( 14 )]
 position = Vector2( -116, 73 )
 seat_name = "Seat 2"
+near_groom_table = true
 near_dance_floor = true
 
-[node name="Seat3" parent="Table 2" instance=ExtResource( 14 )]
+[node name="Seat3" parent="Family Table" instance=ExtResource( 14 )]
 position = Vector2( -112, -63 )
 seat_name = "Seat 3"
 near_groom_table = true
 
-[node name="Seat4" parent="Table 2" instance=ExtResource( 14 )]
+[node name="Seat4" parent="Family Table" instance=ExtResource( 14 )]
 position = Vector2( 107, 71 )
 seat_name = "Seat 4"
+near_groom_table = true
 near_dance_floor = true
 
-[node name="Table 3" type="Node2D" parent="."]
+[node name="Buffet Table" type="Node2D" parent="."]
 position = Vector2( 900, 775 )
 script = ExtResource( 2 )
 
-[node name="Seat1" parent="Table 3" instance=ExtResource( 14 )]
+[node name="Seat1" parent="Buffet Table" instance=ExtResource( 14 )]
 position = Vector2( 111, -63 )
 seat_name = "Seat 1"
 near_buffet = true
 
-[node name="Seat2" parent="Table 3" instance=ExtResource( 14 )]
+[node name="Seat2" parent="Buffet Table" instance=ExtResource( 14 )]
 position = Vector2( -107, 76 )
 seat_name = "Seat 2"
+near_buffet = true
 near_dance_floor = true
 
-[node name="Seat3" parent="Table 3" instance=ExtResource( 14 )]
+[node name="Seat3" parent="Buffet Table" instance=ExtResource( 14 )]
 position = Vector2( -105, -60 )
 seat_name = "Seat 3"
+near_buffet = true
 near_dance_floor = true
 
-[node name="Seat4" parent="Table 3" instance=ExtResource( 14 )]
+[node name="Seat4" parent="Buffet Table" instance=ExtResource( 14 )]
 position = Vector2( 113, 79 )
 seat_name = "Seat 4"
 near_buffet = true

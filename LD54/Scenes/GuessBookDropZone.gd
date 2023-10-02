@@ -72,12 +72,7 @@ func arrange_items(anim:bool=false):
 		
 #		var local_cell_index = column_index + (row_index * columns) + (page_index * rows * column_index)
 		child.visible = min_child_index <= child_index and child_index <= max_child_index
-		
-		if child_index == 10:
-			pass
-		
-		if child_index > max_child_index:
-			pass
+		child.dropzone_meta = child_index
 		
 		if child.visible:
 			var cell_pos = rect_global_position
@@ -90,6 +85,8 @@ func arrange_items(anim:bool=false):
 			if not anim:
 				child.global_position = cell_pos
 			child.destination = cell_pos
+#		else:
+#			child.global_position = Vector2(-200, -200)
 
 		column_index = (column_index + 1) % columns
 		if column_index == 0:

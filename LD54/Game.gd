@@ -3,6 +3,8 @@ extends Node
 export(PackedScene) var game_data_scene
 var Data: GameData
 
+var current_level_path
+
 export(PoolColorArray) var transition_colors
 
 func _ready():

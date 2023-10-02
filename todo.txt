@@ -1,11 +1,13 @@
-	
 create end screen UI with Star rating, replay button, and exit to menu
 
-make people move a bit to dance?
+create the second level
 
-create the second level (maybe use dialogic/panel to have the ex request to tank the wedding)
+add quit button
 
 if time left:
+
+	make people move a bit to dance?
+
 	use Navigation2DService and agent to calculate movement path of attendee
 	
 	integrate some fitting music
@@ -17,3 +19,5 @@ if time left:
 	Maybe we can have a spash title at the start of each phase?
 
 	Make the z index of every element in movement on the map relative to the y position
+
+

@@ -219,6 +219,10 @@ topic = "Jewelry"
 [node name="SmellyTrait" parent="Attendees/Tom" instance=ExtResource( 25 )]
 is_opposite = true
 
+[node name="LikesFashion" type="Node" parent="Attendees/Tom"]
+script = ExtResource( 4 )
+topic = "Fashion"
+
 [node name="Pumbaa" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Pumbaa"
 
@@ -255,6 +259,11 @@ script = ExtResource( 10 )
 
 [node name="ChattyTrait" parent="Attendees/John" instance=ExtResource( 27 )]
 is_opposite = true
+
+[node name="DislikesFashion" type="Node" parent="Attendees/John"]
+script = ExtResource( 4 )
+topic = "Fashion"
+dislike = true
 
 [node name="Sandra" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Sandra"
@@ -295,6 +304,10 @@ hidden_trait = true
 of_groom = true
 costume_part = "costume"
 
+[node name="LikesFashion" type="Node" parent="Attendees/Vito"]
+script = ExtResource( 4 )
+topic = "Fashion"
+
 [node name="Yvan" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Yvan"
 
@@ -306,8 +319,15 @@ oposite = true
 script = ExtResource( 4 )
 topic = "Geek culture"
 
+[node name="LikesFashion" type="Node" parent="Attendees/Yvan"]
+script = ExtResource( 4 )
+topic = "Fashion"
+
 [node name="Gordon" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Gordon"
+eyes_texture = ExtResource( 6 )
+face_texture = ExtResource( 8 )
+body_texture = ExtResource( 19 )
 
 [node name="GourmetTrait" type="Node" parent="Attendees/Gordon"]
 script = ExtResource( 20 )
@@ -315,6 +335,11 @@ script = ExtResource( 20 )
 [node name="DislikesGeekCulture" type="Node" parent="Attendees/Gordon"]
 script = ExtResource( 4 )
 topic = "Geek culture"
+dislike = true
+
+[node name="DilikesFolklore" type="Node" parent="Attendees/Gordon"]
+script = ExtResource( 4 )
+topic = "Folklore"
 dislike = true
 
 [node name="Berlioz" parent="Attendees" instance=ExtResource( 2 )]

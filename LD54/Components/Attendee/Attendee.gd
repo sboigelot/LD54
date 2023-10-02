@@ -18,6 +18,8 @@ var phase_completed: bool = false
 export(bool) var go_drink_at_party = false
 export(bool) var go_dance_at_party = true
 
+export(String) var activity
+
 func _ready():
 	$AttendeeVisual.update_sprites(self)
 	$CanvasLayer/Invitation.update_attendee(self)
@@ -66,42 +68,42 @@ func start_phase_seat(delay):
 	if delay > 0.0:
 		yield(get_tree().create_timer(delay), "timeout")
 	
-#	Attendee go to bride/groom
+	activity = "Attendee go to bride/groom"
 	var bride_position = Game.Data.current_level.meet_bride_pos2d.global_position
 	$AttendeeVisual.start_move_to(bride_position)
 	yield($AttendeeVisual, "move_completed")
 	
-#	Attendee interract with groom
+	activity = "Attendee interract with groom"
 	yield(interact_with_bride(), "completed")
 
-#	Attendee go to groom
+	activity = "Attendee go to groom"
 	var groom_position = Game.Data.current_level.meet_groom_pos2d.global_position
 	$AttendeeVisual.start_move_to(groom_position)
 	yield($AttendeeVisual, "move_completed")
 	
-#	Attendee interract with groom
+	activity = "Attendee interract with groom"
 	yield(interact_with_groom(), "completed")
 	
-#	Attendee go to seat
+	activity = "Attendee go to seat"
 	var seat_position = get_seat().global_position
 	$AttendeeVisual.start_move_to(seat_position)
 	yield($AttendeeVisual, "move_completed")
 	
-#	Attendee interact with seat
+	activity = "Attendee interact with seat"
 	yield(interact_with_seat_position(get_seat()), "completed")	
 	seated = true
 
-#	Attendee wait for everyone at table
+	activity = "Attendee wait for everyone at table"
 	var table = get_seat().get_parent()
 	while not table.everyone_seated():
 		yield(get_tree().create_timer(0.5), "timeout")
 		
-#	Attendee waits for their turn to speak
+	activity = "Attendee waits for their turn to speak"
 	while table.current_speaker != null:
 		yield(get_tree().create_timer(0.5), "timeout")
 	table.current_speaker = self
 	
-#	Attendee interract at table
+	activity = "Attendee interract at table"
 	var attendees = table.get_attendees()
 	for other_attendee in attendees:
 		if self == other_attendee:
@@ -109,62 +111,63 @@ func start_phase_seat(delay):
 		yield(interact_with_attendee(other_attendee), "completed")
 	
 	table.current_speaker = null
+	
+	activity = "phase_completed"
 	phase_completed = true
 
 func start_phase_eatdrink(delay):
 	
 	var invited = is_invited()
-	
-	seated = false
-	
 	if not invited:
 		return
+	
+	seated = false
 			
 	if delay > 0.0:
 		yield(get_tree().create_timer(delay), "timeout")
 	
-#	Attendee interact with seat
+	activity = "Attendee interact with seat"
 	yield(interact_with_seat_position(get_seat()), "completed")
 	seated = false
 
-#	Attendee go to buffet location
+	activity = "Attendee go to buffet location"
 	var buffet_position = Game.Data.current_level.buffet_pos2d.global_position
 	$AttendeeVisual.start_move_to(buffet_position)
 	yield($AttendeeVisual, "move_completed")
 	
-#	Attendee interact with buffet location
+	activity = "Attendee interact with buffet location"
 	yield(interact_with_buffet(get_seat()), "completed")
 	
-#	Attendee go to seat
+	activity = "Attendee go to seat"
 	var seat_position = get_seat().global_position
 	$AttendeeVisual.start_move_to(seat_position)
 	yield($AttendeeVisual, "move_completed")
 	
-#	Attendee go to bar location
+	activity = "Attendee go to bar location"
 	var bar_position = Game.Data.current_level.bar_pos2d.global_position
 	$AttendeeVisual.start_move_to(bar_position)
 	yield($AttendeeVisual, "move_completed")
 	
-#	Attendee interact with bar location
+	activity = "Attendee interact with bar location"
 	yield(interact_with_bar(get_seat()), "completed")
 	
-#	Attendee go to seat
+	activity = "Attendee go to seat"
 	$AttendeeVisual.start_move_to(seat_position)
 	yield($AttendeeVisual, "move_completed")
 		
 	seated = true
 
-#	Attendee wait for everyone at table
+	activity = "Attendee wait for everyone at table"
 	var table = get_seat().get_parent()
 	while not table.everyone_seated():
 		yield(get_tree().create_timer(0.5), "timeout")
 		
-#	Attendee waits for their turn to speak
+	activity = "Attendee waits for their turn to speak"
 	while table.current_speaker != null:
 		yield(get_tree().create_timer(0.5), "timeout")
 	table.current_speaker = self
 	
-#	Attendee interract at table
+	activity = "Attendee interract at table"
 	var attendees = table.get_attendees()
 	for other_attendee in attendees:
 		if self == other_attendee:
@@ -172,36 +175,36 @@ func start_phase_eatdrink(delay):
 		yield(interact_with_attendee(other_attendee), "completed")
 	
 	table.current_speaker = null
+	
+	activity = "phase_completed"
 	phase_completed = true
-
 
 func start_phase_party(delay):
 	
 	var invited = is_invited()
-	
-	seated = false
-	
 	if not invited:
 		return
+	
+	seated = false
 			
 	if delay > 0.0:
 		yield(get_tree().create_timer(delay), "timeout")
 	
-#	Attendee interact with seat
+	activity = "Attendee interact with seat"
 	yield(interact_with_seat_position(get_seat()), "completed")
 	seated = false
 	
 	if go_drink_at_party:		
-	#	Attendee go to bar location
+		activity = "Attendee go to bar location"
 		var bar_position = Game.Data.current_level.bar_pos2d.global_position
 		$AttendeeVisual.start_move_to(bar_position)
 		yield($AttendeeVisual, "move_completed")
 		
-	#	Attendee interact with bar location
+		activity = "Attendee interact with bar location"
 		yield(interact_with_bar(get_seat()), "completed")
 		
 	if go_dance_at_party:
-	#	Attendee go to dancefloor location
+		activity = "Attendee go to dancefloor location"
 		var dancefloor_position = Game.Data.current_level.dancefloor_pos2d.global_position
 		dancefloor_position += Vector2(
 			rand_range(-200.0, 200.0),
@@ -211,36 +214,36 @@ func start_phase_party(delay):
 		yield($AttendeeVisual, "move_completed")
 		
 		dancing = true
-	#	wait for every dancer on the dance floor
+		activity = "wait for every dancer on the dance floor"
 		while not Game.Data.current_level.everyone_dancing():
 			yield(get_tree().create_timer(0.5), "timeout")
 		
-	#	Attendee interact with dancefloor location
+		activity = "Attendee interact with dancefloor location"
 #	 yield dance animation
 		yield(get_tree().create_timer(0.5), "timeout")
 		dancing = false
 		yield(interact_with_dancefloor(get_seat()), "completed")
 	
-#	Attendee go to seat
+	activity = "Attendee go to seat"
 	var seat_position = get_seat().global_position
 	$AttendeeVisual.start_move_to(seat_position)
 	yield($AttendeeVisual, "move_completed")
 	
-#	Attendee interact with seat
+	activity = "Attendee interact with seat"
 #	yield(interact_with_seat_position(get_seat()), "completed")	
 	seated = true
 
-#	Attendee wait for everyone at table
+	activity = "Attendee wait for everyone at table"
 	var table = get_seat().get_parent()
 	while not table.everyone_seated():
 		yield(get_tree().create_timer(0.5), "timeout")
 		
-#	Attendee waits for their turn to speak
+	activity = "Attendee waits for their turn to speak"
 	while table.current_speaker != null:
 		yield(get_tree().create_timer(0.5), "timeout")
 	table.current_speaker = self
 	
-#	Attendee interract at table
+	activity = "Attendee interract at table"
 	var attendees = table.get_attendees()
 	for other_attendee in attendees:
 		if self == other_attendee:
@@ -248,6 +251,8 @@ func start_phase_party(delay):
 		yield(interact_with_attendee(other_attendee), "completed")
 	
 	table.current_speaker = null
+	
+	activity = "phase_completed"
 	phase_completed = true
 	
 func register_trait(trait):
@@ -279,9 +284,12 @@ func get_seat_label():
 		return "Not seated"
 		
 	if seat.single_content:
-		return "%s %s" % [
-			seat.get_parent().name,
-			seat.seat_name
+#		return "%s %s" % [
+#			seat.get_parent().name,
+#			seat.seat_name
+#		]
+		return "%s" % [
+			seat.get_parent().name
 		]
 	
 	return "%s" % [

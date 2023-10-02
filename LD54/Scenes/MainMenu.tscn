@@ -137,12 +137,19 @@ margin_right = 730.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 730, 110 )
 rect_pivot_offset = Vector2( 41.5, 10 )
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 27 )
 custom_styles/pressed = SubResource( 29 )
 custom_styles/normal = SubResource( 26 )
+enabled_focus_mode = 0
 text = "Play Level 1"
 
 [node name="PlayLevel2Button" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -151,12 +158,19 @@ margin_right = 730.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 730, 110 )
 rect_pivot_offset = Vector2( 41.5, 10 )
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 27 )
 custom_styles/pressed = SubResource( 29 )
 custom_styles/normal = SubResource( 26 )
+enabled_focus_mode = 0
 text = "Play Level 2"
 
 [node name="FullscreenButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -165,12 +179,19 @@ margin_right = 730.0
 margin_bottom = 370.0
 rect_min_size = Vector2( 730, 110 )
 rect_pivot_offset = Vector2( 41.5, 10 )
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 27 )
 custom_styles/pressed = SubResource( 29 )
 custom_styles/normal = SubResource( 26 )
+enabled_focus_mode = 0
 text = "Toggle Fullscreen (F11)"
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -257,17 +278,20 @@ margin_right = 150.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 150, 0 )
 rect_pivot_offset = Vector2( 41.5, 10 )
+focus_mode = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 27 )
 custom_styles/pressed = SubResource( 28 )
 custom_styles/normal = SubResource( 26 )
+enabled_focus_mode = 0
 text = "Quit"
-
-[node name="Sprite" type="Sprite" parent="MarginContainer"]
-position = Vector2( 1533, 703 )
-scale = Vector2( 0.75, 0.75 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
 margin_left = 585.0

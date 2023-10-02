@@ -11,7 +11,7 @@ onready var guess_book = get_node(np_guess_book)
 onready var guess_dropzone = get_node(np_guess_dropzone)
 onready var neg_score_bar = get_node(np_neg_score_bar) as ProgressBar
 onready var pos_score_bar = get_node(np_pos_score_bar) as ProgressBar
-onready var intro_tuto = get_node(np_intro_tuto) as AcceptDialog
+onready var intro_tuto = get_node(np_intro_tuto) as PopupDialog
 onready var intro_tuto_text = get_node(np_intro_tuto_text) as RichTextLabel
 
 export(NodePath) var np_phase_bar
@@ -90,7 +90,7 @@ func _on_EndPartyButton_pressed():
 		speed_button.pressed = false
 
 func end_game():
-	pass # todo
+	Game.transition_to_scene("res://Scenes/VictoryScreen.tscn")
 
 func update_phase_bar():
 	var phase = 0
@@ -156,3 +156,11 @@ func _on_IntroTuto_confirmed():
 
 func _on_IntroTuto_custom_action(action):
 	Game.Data.current_level._on_IntroTuto_custom_action(action)
+
+func _on_IgnoreTutoButton_pressed():
+	intro_tuto.hide()
+	Game.Data.current_level._on_IntroTuto_custom_action("skip_tutorial")
+
+func _on_OkTutoButton_pressed():
+	intro_tuto.hide()
+	Game.Data.current_level._on_IntroTuto_confirmed()
