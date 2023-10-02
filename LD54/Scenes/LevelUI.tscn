@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scenes/LevelUI.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Game/normal_bold.tres" type="DynamicFont" id=2]
@@ -24,6 +24,11 @@
 [ext_resource path="res://Images/UIsvg/polaroid.svg" type="Texture" id=22]
 [ext_resource path="res://Images/UIsvg/live_panel.svg" type="Texture" id=23]
 [ext_resource path="res://Images/UIsvg/live_logo.svg" type="Texture" id=24]
+[ext_resource path="res://Images/UIsvg/fastforward_on.svg" type="Texture" id=25]
+[ext_resource path="res://Images/UIsvg/fastforward.svg" type="Texture" id=26]
+[ext_resource path="res://Images/UIsvg/end_wedding.svg" type="Texture" id=27]
+[ext_resource path="res://fonts/Comfortaa/static/Comfortaa-Bold.ttf" type="DynamicFontData" id=28]
+[ext_resource path="res://Images/UIsvg/background.svg" type="Texture" id=29]
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 22 )
@@ -58,12 +63,16 @@ border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.84, 0.71148, 0.6972, 1 )
+bg_color = Color( 0.921569, 0.823529, 0.654902, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 28 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.85098, 0.45098, 0.407843, 1 )
@@ -74,7 +83,7 @@ border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.4182, 0.51, 0.46104, 1 )
+bg_color = Color( 0.921569, 0.823529, 0.654902, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -95,6 +104,11 @@ np_end_plan_button = NodePath("LevelUIControl/GridContainer/PhaseProgressAndCont
 np_end_seat_button = NodePath("LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer2/EndSeatingButton")
 np_end_drink_button = NodePath("LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer3/EndEatDrinkButton")
 np_end_party_button = NodePath("LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer4/EndPartyButton")
+
+[node name="Background" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 29 )
+centered = false
 
 [node name="LevelUIControl" type="Control" parent="."]
 anchor_right = 1.0
@@ -559,6 +573,7 @@ margin_bottom = 66.0
 rect_min_size = Vector2( 600, 50 )
 size_flags_vertical = 4
 custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 max_value = 3.0
 step = 1.0
 rounded = true
@@ -595,11 +610,12 @@ margin_right = 310.0
 margin_bottom = 83.0
 rect_min_size = Vector2( 130, 83 )
 
-[node name="SpeedButton" type="Button" parent="LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer2"]
+[node name="SpeedButton" type="TextureButton" parent="LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer2"]
 margin_right = 130.0
 margin_bottom = 83.0
 toggle_mode = true
-text = "SpeedUp"
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 25 )
 
 [node name="EndSeatingButton" type="TextureButton" parent="LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer2"]
 margin_right = 130.0
@@ -632,10 +648,17 @@ rect_min_size = Vector2( 130, 83 )
 [node name="EndPartyButton" type="TextureButton" parent="LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer4"]
 margin_right = 130.0
 margin_bottom = 83.0
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 17 )
-texture_disabled = ExtResource( 18 )
+texture_normal = ExtResource( 27 )
+
+[node name="Label" type="Label" parent="LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer4/EndPartyButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "End
+Wedding"
+align = 1
+valign = 1
 
 [node name="ScoreDisplay" type="HBoxContainer" parent="LevelUIControl/GridContainer"]
 margin_left = 728.0

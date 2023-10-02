@@ -104,245 +104,242 @@ topic = "Pets"
 [node name="SingleTrait" type="Node" parent="Attendees/Sammy"]
 script = ExtResource( 37 )
 
-[node name="Disabled" type="Node2D" parent="."]
-visible = false
-
-[node name="Filip" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Filip" parent="Attendees" instance=ExtResource( 2 )]
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 8 )
 
-[node name="LikeCar" type="Node" parent="Disabled/Filip"]
+[node name="LikeCar" type="Node" parent="Attendees/Filip"]
 script = ExtResource( 4 )
 topic = "Car"
 
-[node name="LikeSpace" type="Node" parent="Disabled/Filip"]
+[node name="LikeSpace" type="Node" parent="Attendees/Filip"]
 script = ExtResource( 4 )
 topic = "Space"
 
-[node name="Michael" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Michael" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Michael"
 hair_texture = ExtResource( 22 )
 face_texture = ExtResource( 8 )
 body_texture = ExtResource( 23 )
 
-[node name="LikeNature" type="Node" parent="Disabled/Michael"]
+[node name="LikeNature" type="Node" parent="Attendees/Michael"]
 script = ExtResource( 4 )
 topic = "Nature"
 
-[node name="VeganTrait" parent="Disabled/Michael" instance=ExtResource( 21 )]
+[node name="VeganTrait" parent="Attendees/Michael" instance=ExtResource( 21 )]
 
-[node name="ExTrait" type="Node" parent="Disabled/Michael"]
+[node name="ExTrait" type="Node" parent="Attendees/Michael"]
 script = ExtResource( 16 )
 of_bride = true
 
-[node name="Karene" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Karene" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Karene"
 hair_texture = ExtResource( 14 )
 eyes_texture = ExtResource( 17 )
 face_texture = ExtResource( 13 )
 body_texture = ExtResource( 15 )
 
-[node name="LikeNature" type="Node" parent="Disabled/Karene"]
+[node name="LikeNature" type="Node" parent="Attendees/Karene"]
 script = ExtResource( 4 )
 topic = "Nature"
 
-[node name="VeganTrait" parent="Disabled/Karene" instance=ExtResource( 21 )]
+[node name="VeganTrait" parent="Attendees/Karene" instance=ExtResource( 21 )]
 
-[node name="ExTrait" type="Node" parent="Disabled/Karene"]
+[node name="ExTrait" type="Node" parent="Attendees/Karene"]
 script = ExtResource( 16 )
 of_groom = true
 
-[node name="Andrea" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Andrea" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Andrea"
 body_texture = ExtResource( 9 )
 go_dance_at_party = false
 
-[node name="LikeFotnite" type="Node" parent="Disabled/Andrea"]
+[node name="LikeFotnite" type="Node" parent="Attendees/Andrea"]
 script = ExtResource( 4 )
 topic = "Fortnite"
 
-[node name="HateCar" type="Node" parent="Disabled/Andrea"]
+[node name="HateCar" type="Node" parent="Attendees/Andrea"]
 script = ExtResource( 4 )
 topic = "Car"
 dislike = true
 
-[node name="Pascal" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Pascal" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Pascal"
 hair_texture = ExtResource( 7 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 13 )
 
-[node name="LikeSpace" type="Node" parent="Disabled/Pascal"]
+[node name="LikeSpace" type="Node" parent="Attendees/Pascal"]
 script = ExtResource( 4 )
 topic = "Space"
 
-[node name="VeganTrait" parent="Disabled/Pascal" instance=ExtResource( 21 )]
+[node name="VeganTrait" parent="Attendees/Pascal" instance=ExtResource( 21 )]
 is_opposite = true
 
-[node name="UncleBob" parent="Disabled" instance=ExtResource( 2 )]
+[node name="UncleBob" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Uncle Bob"
 hair_texture = ExtResource( 5 )
 face_texture = ExtResource( 8 )
 body_texture = ExtResource( 19 )
 go_drink_at_party = true
 
-[node name="FamilyTrait" type="Node" parent="Disabled/UncleBob"]
+[node name="FamilyTrait" type="Node" parent="Attendees/UncleBob"]
 script = ExtResource( 10 )
 
-[node name="LikeCar" type="Node" parent="Disabled/UncleBob"]
+[node name="LikeCar" type="Node" parent="Attendees/UncleBob"]
 script = ExtResource( 4 )
 topic = "Car"
 
-[node name="AlcoholicTrait" type="Node" parent="Disabled/UncleBob"]
+[node name="AlcoholicTrait" type="Node" parent="Attendees/UncleBob"]
 script = ExtResource( 18 )
 
-[node name="Callum" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Callum" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Callum"
 hair_texture = null
 eyes_texture = ExtResource( 17 )
 body_texture = ExtResource( 9 )
 
-[node name="LikesJewelry" type="Node" parent="Disabled/Callum"]
+[node name="LikesJewelry" type="Node" parent="Attendees/Callum"]
 script = ExtResource( 4 )
 topic = "Jewelry"
 
-[node name="SmellyTrait" parent="Disabled/Callum" instance=ExtResource( 25 )]
+[node name="SmellyTrait" parent="Attendees/Callum" instance=ExtResource( 25 )]
 
-[node name="Tom" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Tom" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Tom"
 hair_texture = ExtResource( 29 )
 face_texture = ExtResource( 11 )
 body_texture = ExtResource( 19 )
 
-[node name="LikesJewelry" type="Node" parent="Disabled/Tom"]
+[node name="LikesJewelry" type="Node" parent="Attendees/Tom"]
 script = ExtResource( 4 )
 topic = "Jewelry"
 
-[node name="SmellyTrait" parent="Disabled/Tom" instance=ExtResource( 25 )]
+[node name="SmellyTrait" parent="Attendees/Tom" instance=ExtResource( 25 )]
 is_opposite = true
 
-[node name="Pumbaa" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Pumbaa" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Pumbaa"
 
-[node name="MessyEaterTrait" parent="Disabled/Pumbaa" instance=ExtResource( 24 )]
+[node name="MessyEaterTrait" parent="Attendees/Pumbaa" instance=ExtResource( 24 )]
 
-[node name="LikeFotnite" type="Node" parent="Disabled/Pumbaa"]
+[node name="LikeFotnite" type="Node" parent="Attendees/Pumbaa"]
 script = ExtResource( 4 )
 topic = "Fortnite"
 
-[node name="Kevin" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Kevin" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Kevin"
 
-[node name="GourmetTrait" type="Node" parent="Disabled/Kevin"]
+[node name="GourmetTrait" type="Node" parent="Attendees/Kevin"]
 script = ExtResource( 20 )
 oposite = true
 
-[node name="LikePets" type="Node" parent="Disabled/Kevin"]
+[node name="LikePets" type="Node" parent="Attendees/Kevin"]
 script = ExtResource( 4 )
 topic = "Pets"
 
-[node name="Jack" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Jack" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Jack"
 
-[node name="FamilyTrait" type="Node" parent="Disabled/Jack"]
+[node name="FamilyTrait" type="Node" parent="Attendees/Jack"]
 script = ExtResource( 10 )
 
-[node name="ChattyTrait" parent="Disabled/Jack" instance=ExtResource( 27 )]
+[node name="ChattyTrait" parent="Attendees/Jack" instance=ExtResource( 27 )]
 
-[node name="John" parent="Disabled" instance=ExtResource( 2 )]
+[node name="John" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "John"
 
-[node name="FamilyTrait" type="Node" parent="Disabled/John"]
+[node name="FamilyTrait" type="Node" parent="Attendees/John"]
 script = ExtResource( 10 )
 
-[node name="ChattyTrait" parent="Disabled/John" instance=ExtResource( 27 )]
+[node name="ChattyTrait" parent="Attendees/John" instance=ExtResource( 27 )]
 is_opposite = true
 
-[node name="Sandra" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Sandra" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Sandra"
 hair_texture = ExtResource( 30 )
 eyes_texture = ExtResource( 28 )
 face_texture = ExtResource( 13 )
 body_texture = ExtResource( 31 )
 
-[node name="ChattyTrait" parent="Disabled/Sandra" instance=ExtResource( 27 )]
+[node name="ChattyTrait" parent="Attendees/Sandra" instance=ExtResource( 27 )]
 
-[node name="LikesFolklore" type="Node" parent="Disabled/Sandra"]
+[node name="LikesFolklore" type="Node" parent="Attendees/Sandra"]
 script = ExtResource( 4 )
 topic = "Folklore"
 
-[node name="CostumeConflictTrait" type="Node" parent="Disabled/Sandra"]
+[node name="CostumeConflictTrait" type="Node" parent="Attendees/Sandra"]
 script = ExtResource( 32 )
 hidden_trait = true
 of_bride = true
 
-[node name="Vito" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Vito" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Vito"
 hair_texture = ExtResource( 34 )
 eyes_texture = ExtResource( 6 )
 face_texture = ExtResource( 11 )
 body_texture = ExtResource( 33 )
 
-[node name="MafiaTrait" type="Node" parent="Disabled/Vito"]
+[node name="MafiaTrait" type="Node" parent="Attendees/Vito"]
 script = ExtResource( 26 )
 
-[node name="DilikesFolklore" type="Node" parent="Disabled/Vito"]
+[node name="DilikesFolklore" type="Node" parent="Attendees/Vito"]
 script = ExtResource( 4 )
 topic = "Folklore"
 dislike = true
 
-[node name="CostumeConflictTrait" type="Node" parent="Disabled/Vito"]
+[node name="CostumeConflictTrait" type="Node" parent="Attendees/Vito"]
 script = ExtResource( 32 )
 hidden_trait = true
 of_groom = true
 costume_part = "costume"
 
-[node name="Yvan" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Yvan" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Yvan"
 
-[node name="DancerTrait" type="Node" parent="Disabled/Yvan"]
+[node name="DancerTrait" type="Node" parent="Attendees/Yvan"]
 script = ExtResource( 12 )
 oposite = true
 
-[node name="LikesGeekCulture" type="Node" parent="Disabled/Yvan"]
+[node name="LikesGeekCulture" type="Node" parent="Attendees/Yvan"]
 script = ExtResource( 4 )
 topic = "Geek culture"
 
-[node name="Gordon" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Gordon" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Gordon"
 
-[node name="GourmetTrait" type="Node" parent="Disabled/Gordon"]
+[node name="GourmetTrait" type="Node" parent="Attendees/Gordon"]
 script = ExtResource( 20 )
 
-[node name="DislikesGeekCulture" type="Node" parent="Disabled/Gordon"]
+[node name="DislikesGeekCulture" type="Node" parent="Attendees/Gordon"]
 script = ExtResource( 4 )
 topic = "Geek culture"
 dislike = true
 
-[node name="Berlioz" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Berlioz" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Berlioz"
 
-[node name="MessyEaterTrait" parent="Disabled/Berlioz" instance=ExtResource( 24 )]
+[node name="MessyEaterTrait" parent="Attendees/Berlioz" instance=ExtResource( 24 )]
 is_opposite = true
 
-[node name="LikesGymCulture" type="Node" parent="Disabled/Berlioz"]
+[node name="LikesGymCulture" type="Node" parent="Attendees/Berlioz"]
 script = ExtResource( 4 )
 topic = "Gym Culture"
 
-[node name="Bruce" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Bruce" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Bruce"
 
-[node name="MafiaTrait" type="Node" parent="Disabled/Bruce"]
+[node name="MafiaTrait" type="Node" parent="Attendees/Bruce"]
 script = ExtResource( 26 )
 is_opposite = true
 
-[node name="DislikesFolklore" type="Node" parent="Disabled/Bruce"]
+[node name="DislikesFolklore" type="Node" parent="Attendees/Bruce"]
 script = ExtResource( 4 )
 topic = "Gym Culture"
 dislike = true
 
-[node name="Juliette" parent="Disabled" instance=ExtResource( 2 )]
+[node name="Juliette" parent="Attendees" instance=ExtResource( 2 )]
 full_name = "Juliette"
 hair_texture = ExtResource( 35 )
 eyes_texture = ExtResource( 17 )
@@ -350,17 +347,20 @@ face_texture = ExtResource( 8 )
 body_texture = ExtResource( 36 )
 go_dance_at_party = false
 
-[node name="LikePets" type="Node" parent="Disabled/Juliette"]
+[node name="LikePets" type="Node" parent="Attendees/Juliette"]
 script = ExtResource( 4 )
 topic = "Pets"
 
-[node name="HateCar" type="Node" parent="Disabled/Juliette"]
+[node name="HateCar" type="Node" parent="Attendees/Juliette"]
 script = ExtResource( 4 )
 topic = "Car"
 dislike = true
 
-[node name="CostumeConflictTrait" type="Node" parent="Disabled/Juliette"]
+[node name="CostumeConflictTrait" type="Node" parent="Attendees/Juliette"]
 script = ExtResource( 32 )
 hidden_trait = true
 of_bride = true
 costume_part = "hair"
+
+[node name="Disabled" type="Node2D" parent="."]
+visible = false

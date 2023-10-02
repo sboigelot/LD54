@@ -17,6 +17,19 @@ func _on_StartGameButton_pressed():
 	yield(ScreenTransition, "transitioned_halfway")
 	Game.new_game()
 
+
+func _on_PlayLevel1Button_pressed():
+	SfxManager.play("buttonpress")
+	Game.transition_to_scene("res://Scenes/Levels/Level01.tscn")
+	yield(ScreenTransition, "transitioned_halfway")
+	Game.new_game()
+
+func _on_PlayLevel2Button_pressed():
+	SfxManager.play("buttonpress")
+	Game.transition_to_scene("res://Scenes/Levels/Level01.tscn")
+	yield(ScreenTransition, "transitioned_halfway")
+	Game.new_game()
+
 func _on_FullscreenButton_pressed():
 	OS.window_fullscreen = !OS.window_fullscreen
 	SfxManager.play("buttonpress")

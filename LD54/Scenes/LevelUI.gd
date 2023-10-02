@@ -22,7 +22,7 @@ export(NodePath) var np_end_drink_button
 export(NodePath) var np_end_party_button
 
 onready var phase_bar = get_node(np_phase_bar) as ProgressBar
-onready var speed_button = get_node(np_speed_button) as Button
+onready var speed_button = get_node(np_speed_button) as TextureButton
 onready var end_plan_button = get_node(np_end_plan_button) as TextureButton
 onready var end_seat_button = get_node(np_end_seat_button) as TextureButton
 onready var end_drink_button = get_node(np_end_drink_button) as TextureButton
