@@ -273,7 +273,8 @@ func _on_Invitation_drag():
 func _on_Invitation_select():
 	LevelUi.show_attendee_details(self)
 	
-func un_invite(drop_zone):
+func un_invite(drop_zone, floor_rect2D: Rect2):
+	$CanvasLayer/Invitation.allowed_out_of_dropzone_bounds = floor_rect2D
 	$CanvasLayer/Invitation.un_invited_zone = drop_zone
 	$CanvasLayer/Invitation.un_invite()
 

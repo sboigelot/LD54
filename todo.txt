@@ -1,4 +1,3 @@
-replace victory sprites
 replay level --> should restart the tutorial
 
 

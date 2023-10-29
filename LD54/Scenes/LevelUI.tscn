@@ -340,43 +340,6 @@ margin_bottom = 70.0
 dialog_text = "Are you sure you wish to quit this level?
 All progress will be lost!"
 
-[node name="TooltipPopup" type="Popup" parent="LevelUIControl"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 10 )
-
-[node name="MainContainer" type="PanelContainer" parent="LevelUIControl/TooltipPopup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 226.0
-margin_bottom = 34.0
-mouse_default_cursor_shape = 2
-custom_styles/panel = ExtResource( 7 )
-
-[node name="MarginContainer" type="MarginContainer" parent="LevelUIControl/TooltipPopup/MainContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 266.0
-margin_bottom = 74.0
-custom_constants/margin_right = 4
-custom_constants/margin_top = 4
-custom_constants/margin_left = 4
-custom_constants/margin_bottom = 4
-
-[node name="ContentRichTextBox" type="RichTextLabel" parent="LevelUIControl/TooltipPopup/MainContainer/MarginContainer"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 254.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 250, 0 )
-size_flags_horizontal = 3
-size_flags_vertical = 6
-custom_fonts/normal_font = ExtResource( 8 )
-bbcode_enabled = true
-bbcode_text = "[color=black]this is a tooltip content[/color]"
-text = "this is a tooltip content"
-fit_content_height = true
-
 [node name="GuestBook" type="PanelContainer" parent="LevelUIControl"]
 visible = false
 anchor_left = 1.0
@@ -513,26 +476,25 @@ rect_min_size = Vector2( 0, 8 )
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="LevelUIControl/EventLog/MarginContainer/VBoxContainer"]
-margin_left = 100.0
+margin_left = 42.0
 margin_top = 12.0
-margin_right = 227.0
-margin_bottom = 58.0
+margin_right = 286.0
+margin_bottom = 55.0
 size_flags_horizontal = 4
 
 [node name="TextureRect" type="TextureRect" parent="LevelUIControl/EventLog/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 margin_right = 46.0
 margin_bottom = 46.0
 size_flags_horizontal = 6
 texture = ExtResource( 24 )
 
 [node name="Title" type="Label" parent="LevelUIControl/EventLog/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 50.0
-margin_top = 1.0
-margin_right = 127.0
-margin_bottom = 44.0
+margin_right = 244.0
+margin_bottom = 43.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "LIVE"
+text = "Wedding Book"
 align = 1
 
 [node name="Separator" type="ColorRect" parent="LevelUIControl/EventLog/MarginContainer/VBoxContainer"]
@@ -545,7 +507,7 @@ mouse_filter = 2
 color = Color( 0.176471, 0.262745, 0.309804, 1 )
 
 [node name="AutoScrollContainer" type="ScrollContainer" parent="LevelUIControl/EventLog/MarginContainer/VBoxContainer"]
-margin_top = 62.0
+margin_top = 59.0
 margin_right = 328.0
 margin_bottom = 898.0
 mouse_filter = 2
@@ -555,9 +517,9 @@ scroll_horizontal_enabled = false
 script = ExtResource( 14 )
 
 [node name="LiveEventContainer" type="VBoxContainer" parent="LevelUIControl/EventLog/MarginContainer/VBoxContainer/AutoScrollContainer"]
-margin_top = 717.0
+margin_top = 720.0
 margin_right = 328.0
-margin_bottom = 836.0
+margin_bottom = 839.0
 size_flags_horizontal = 3
 size_flags_vertical = 10
 
@@ -855,6 +817,47 @@ margin_right = 94.0
 margin_bottom = 107.0
 texture_normal = ExtResource( 31 )
 
+[node name="TooltipPopup" type="Popup" parent="LevelUIControl"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
+
+[node name="Node2D" type="Node2D" parent="LevelUIControl/TooltipPopup"]
+z_index = 4096
+z_as_relative = false
+
+[node name="MainContainer" type="PanelContainer" parent="LevelUIControl/TooltipPopup/Node2D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 274.0
+margin_bottom = 82.0
+mouse_default_cursor_shape = 2
+custom_styles/panel = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUIControl/TooltipPopup/Node2D/MainContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 266.0
+margin_bottom = 74.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="ContentRichTextBox" type="RichTextLabel" parent="LevelUIControl/TooltipPopup/Node2D/MainContainer/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 254.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/normal_font = ExtResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[color=black]this is a tooltip content[/color]"
+text = "this is a tooltip content"
+fit_content_height = true
+
 [connection signal="hide_tooltip" from="LevelUIControl/AttendeeDetailWindowDialog" to="." method="_on_AttendeeDetailWindowDialog_hide_tooltip"]
 [connection signal="show_tooltip" from="LevelUIControl/AttendeeDetailWindowDialog" to="." method="_on_AttendeeDetailWindowDialog_show_tooltip"]
 [connection signal="gui_input" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
@@ -862,9 +865,6 @@ texture_normal = ExtResource( 31 )
 [connection signal="meta_hover_ended" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/MarginContainer/TraitsRichTextLabel" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_ended"]
 [connection signal="meta_hover_started" from="LevelUIControl/AttendeeDetailWindowDialog/MainContainer/MarginContainer/VBoxContainer/MarginContainer/TraitsRichTextLabel" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_started"]
 [connection signal="confirmed" from="LevelUIControl/QuitConfirmationDialog" to="." method="_on_QuitConfirmationDialog_confirmed"]
-[connection signal="gui_input" from="LevelUIControl/TooltipPopup/MainContainer" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
-[connection signal="meta_hover_ended" from="LevelUIControl/TooltipPopup/MainContainer/MarginContainer/ContentRichTextBox" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_ended"]
-[connection signal="meta_hover_started" from="LevelUIControl/TooltipPopup/MainContainer/MarginContainer/ContentRichTextBox" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_started"]
 [connection signal="pressed" from="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/Menu/PrevPageButton" to="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone" method="_on_PrevPageButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/Menu/NextPageButton" to="LevelUIControl/GuestBook/MarginContainer/VBoxContainer/GuessBookDropZone" method="_on_NextPageButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/CanvasLayer/IntroTuto/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/IgnoreTutoButton" to="." method="_on_IgnoreTutoButton_pressed"]
@@ -875,3 +875,6 @@ texture_normal = ExtResource( 31 )
 [connection signal="pressed" from="LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer3/EndEatDrinkButton" to="." method="_on_EndEatDrinkButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/GridContainer/PhaseProgressAndControl/PhaseControl/MarginContainer4/EndPartyButton" to="." method="_on_EndPartyButton_pressed"]
 [connection signal="pressed" from="LevelUIControl/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="gui_input" from="LevelUIControl/TooltipPopup/Node2D/MainContainer" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_MainContainer_gui_input"]
+[connection signal="meta_hover_ended" from="LevelUIControl/TooltipPopup/Node2D/MainContainer/MarginContainer/ContentRichTextBox" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_ended"]
+[connection signal="meta_hover_started" from="LevelUIControl/TooltipPopup/Node2D/MainContainer/MarginContainer/ContentRichTextBox" to="LevelUIControl/AttendeeDetailWindowDialog" method="_on_TraitsRichTextLabel_meta_hover_started"]

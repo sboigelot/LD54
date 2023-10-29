@@ -16,6 +16,8 @@ var destination: Vector2
 
 var vertical_spacer = 70.0
 
+var allowed_out_of_dropzone_bounds: Rect2
+
 func get_attendee():
 	return get_parent().get_parent()
 
@@ -56,7 +58,8 @@ func on_drop():
 	if assigned_seat == null:
 		pervent_draggable_stack()
 		
-#	TODO: prevent going out of get_viewport_rect()
+	if not allowed_out_of_dropzone_bounds.has_point(global_position):
+		un_invite(true)
 
 func search_drop_zone():
 	var drop_zones = get_drop_zones()

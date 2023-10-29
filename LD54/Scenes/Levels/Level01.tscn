@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Components/Attendee/Attendee.tscn" type="PackedScene" id=2]
@@ -48,6 +48,9 @@
 [ext_resource path="res://Data/Traits/MessyEaterTrait.tscn" type="PackedScene" id=49]
 [ext_resource path="res://Images/Avatars/hair_short_brunette.svg" type="Texture" id=50]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 650, 450 )
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
 np_groom = NodePath("Venue/HonorTable/Groom")
@@ -60,6 +63,17 @@ np_buffet_pos2d = NodePath("Venue/BuffetPosition2D")
 np_dancefloor_pos2d = NodePath("Venue/DancefloorPosition2D")
 
 [node name="Venue" parent="." instance=ExtResource( 3 )]
+
+[node name="Area2D" type="Area2D" parent="Venue"]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="VenueFloor" type="CollisionShape2D" parent="Venue/Area2D"]
+position = Vector2( 756, 499 )
+shape = SubResource( 1 )
+disabled = true
 
 [node name="Attendees" type="Node2D" parent="."]
 

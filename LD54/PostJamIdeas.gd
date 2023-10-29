@@ -4,10 +4,9 @@ Priority 1:
  
 	Bugs:
 		
-		Dropping invitation outside the wedding area --> should go back to guest list
-		When mousing over traits they stay behind the guest pics 
+		FIXED:	Dropping invitation outside the wedding area --> should go back to guest list
+		FIXED:	Tooltip text goes behind polaroid avatar
 		correct typos 
-		Tooltip test goes behind polaroid avatar
 
 	Features:
 
@@ -39,7 +38,7 @@ Priority 2:
 		
 ----------------------------------------------------------------------------------------------------
 
-SOme funny limited space ideas 
+Some funny limited space ideas 
 
 Just one pan and some jiggle physics - jigly egg, veggies. Drag things to squish all the ingredients. 
 	Making an omelette or something 

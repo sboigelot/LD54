@@ -137,7 +137,13 @@ func add_interaction_event(interaction_event):
 	
 func un_invite_all():
 	for attendee in $Attendees.get_children():
-		attendee.un_invite(LevelUi.guess_dropzone)
+		var venue_floor_center = $Venue/Area2D/VenueFloor.global_position
+		var venue_floor_shape = $Venue/Area2D/VenueFloor.shape as RectangleShape2D
+		attendee.un_invite(LevelUi.guess_dropzone, 
+			Rect2(venue_floor_center.x - venue_floor_shape.extents.x,
+				venue_floor_center.y - venue_floor_shape.extents.y,
+				venue_floor_shape.extents.x * 2,
+				venue_floor_shape.extents.y * 2))
 		
 	$Disabled.queue_free()
 

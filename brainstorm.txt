@@ -57,12 +57,52 @@ Achiement for making game mad
  
  Rimwold style character
  
+
  
  
  
+ The not-messy version
  
- 
- 
- 
- 
- 
+ Goal of the game:
+	2 levels
+		"Rehersal"	1 easy tutorial -> try to make everyone happy
+		"Wedding"	2 normal diff -> ex ask you to ruin the wedding but you choose if you ruin it of make it a success
+						get 3 stars min out of 5 to win
+						
+		Can replay the level and skip the "rehersal"
+		
+	Phase
+	
+		Planning
+		Seating				--> Enter, go meet groom & bride, go to table, speak with people at table
+		Eating / Drinking	--> Go take food and drink, eat with people at table (& meet everyone else ?), or distance between table and bar
+		Dancing				--> same but with dancefloor & music (maybe poeple fall in love, like he same music etc)
+		
+		Can skip to end
+		
+	2 or 3 traits per person
+		
+	Traits (triggered + or -)
+	
+		Visual attendee:
+			white dress
+	
+		Behavioral traits:
+			vegies 
+			meat lover 
+			mafia
+			cop
+			Smelly
+			Messy eater
+			Clean Freak
+			Dancer
+			Music hater
+			Gourmet (unhappy if far from buffet)
+			Alcoholic (-1 if far, -3 if close to bad because become drunk)
+			Familly (needs to be near groom table)
+			Chatty
+			Unsocial
+			Car lover
+			Gym rat
+			Geek
+			Fan of Folklore
